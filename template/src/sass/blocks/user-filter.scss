@@ -1,0 +1,57 @@
+.user-filter {
+  @include clear-list;
+
+  display: flex;
+  flex-direction: row-reverse;
+
+  &__item {
+    margin-right: -4px;
+  }
+
+  &__button {
+    display: block;
+    overflow: hidden;
+
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    border: 1px solid $white-900;
+    border-radius: 50%;
+    outline: none;
+    background-color: $blue-gray-50;
+
+    &:hover {
+      border-color: $blue-600;
+    }
+
+    img {
+      display: block;
+
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      @include m-s14-h21;
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+      padding-top: 1px;
+
+      text-align: center;
+
+      color: $white-900;
+      background-color: $green-700;
+    }
+
+    &--current {
+      border-color: $white-900;
+      box-shadow: 0 0 0 1px $blue-600;
+    }
+  }
+}

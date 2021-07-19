@@ -1,0 +1,77 @@
+.meta-filter {
+  display: flex;
+  align-items: center;
+
+  $bl: ".meta-filter";
+  @include clear-list;
+
+  &__item {
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+      #{$bl}__status {
+        box-shadow: 0 0 0 4px $blue-600;
+      }
+    }
+  }
+
+  &__status {
+    display: block;
+
+    box-sizing: content-box;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    transition: $animationSpeed;
+
+    border-radius: 50%;
+    outline: none;
+    background-color: transparent;
+
+    &:hover {
+      box-shadow: 0 0 0 4px $orange-300;
+    }
+
+    &--green {
+      background-color: $green-600;
+    }
+
+    &--orange {
+      background-color: $orange-600;
+    }
+
+    &--red {
+      background-color: $red-600;
+    }
+
+    &--time {
+      width: 24px;
+      height: 24px;
+
+      background-image: url("~@/assets/img/status-time.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--alert {
+      width: 24px;
+      height: 24px;
+
+      background-image: url("~@/assets/img/status-alert.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--current {
+      border-color: $white-900;
+      box-shadow: 0 0 0 1px $blue-600;
+    }
+  }
+}

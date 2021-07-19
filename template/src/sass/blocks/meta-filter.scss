@@ -1,0 +1,74 @@
+.meta-filter {
+  @include clear-list;
+
+  display: flex;
+  align-items: center;
+
+  &__item {
+    margin-left: 16px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__status {
+    display: block;
+
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    border: 1px solid $white-900;
+    border-radius: 50%;
+    outline: none;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $blue-600;
+    }
+
+    &--color {
+      width: 8px;
+      height: 8px;
+    }
+
+    &--green {
+      background-color: $green-600;
+    }
+
+    &--orange {
+      background-color: $orange-600;
+    }
+
+    &--red {
+      background-color: $red-600;
+    }
+
+    &--time {
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../img/status-time.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--alert {
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../img/status-alert.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--current {
+      border-color: $white-900;
+      box-shadow: 0 0 0 1px $blue-600;
+    }
+  }
+}

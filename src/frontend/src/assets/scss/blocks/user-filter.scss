@@ -1,0 +1,48 @@
+.user-filter {
+  display: flex;
+  flex-direction: row-reverse;
+
+  $bl: ".user-filter";
+  @include clear-list;
+
+  &__button {
+    display: block;
+    overflow: hidden;
+
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+    transition: $animationSpeed;
+
+    border-radius: 50%;
+    outline: none;
+    background-color: $gray-100;
+
+    img {
+      display: block;
+
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 3px $orange-300;
+    }
+  }
+
+  &__item {
+    margin-right: -4px;
+
+    transition: margin $animationSpeed;
+  }
+
+  &__item.active {
+    margin-right: 4px;
+    margin-left: 8px;
+
+    #{$bl}__button {
+      box-shadow: 0 0 0 3px $blue-600;
+    }
+  }
+}

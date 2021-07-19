@@ -1,0 +1,44 @@
+@mixin center_template($t: 50%, $l: 50%, $p: absolute) {
+  position: $p;
+  top: $t;
+  left: $l;
+
+  transform: translate(-$l, -$t);
+}
+
+//////////////////////////
+/// position: absolute ///
+//////////////////////////
+
+// center-all
+@mixin p_center-all {
+  @include center_template;
+}
+// center-horizontal
+@mixin p_center-h {
+  @include center_template(0, 50%);
+}
+
+// center-vertical
+@mixin p_center-v {
+  @include center_template(50%, 0);
+}
+
+//////////////////////////
+///  position: fixed;  ///
+//////////////////////////
+
+// center-all
+@mixin pf_center-all {
+  @include center_template(50%, 50%, fixed);
+}
+
+// center-horizontal
+@mixin pf_center-h {
+  @include center_template(0, 50%, fixed);
+}
+
+// center-vertical
+@mixin pf_center-v {
+  @include center_template(50%, 0, fixed);
+}

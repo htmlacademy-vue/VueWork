@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>VueWork - создание задачи</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <form class="task-card" method="post">
+        <section class="task-card__wrapper">
+            <button class="task-card__close" type="button"></button>
+
+            <h1 class="task-card__name">
+                <span>Название задачи</span>
+                <input type="text" name="task_name" maxlength="37" value="Название задачи">
+                <button type="button" class="icon icon--edit"></button>
+            </h1>
+            <p class="task-card__date">#123456 создана 10 минут назад</p>
+
+            <ul class="task-card__params">
+                <li>
+                    Участник:
+                    <div class="task-card__participant">
+                        <button type="button" class="task-card__link">добавить пользователя</button>
+
+                        <div class="task-card__users">
+                            <ul class="users-list">
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user1.jpg" alt="Вика Некрасова" width="30" height="30">
+                                        Вика Некрасова
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user2.jpg" alt="Петр Хрустиков" width="30" height="30">
+                                        Петр Хрустиков
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user3.jpg" alt="Михаил Валерьевич Тян-Шанский" width="30" height="30">
+                                        Михаил Валерьевич Тян-Шанский
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <span>N</span>
+                                        Наталья Железнова
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Срок:
+                    <button type="button" class="task-card__link">установить срок</button>
+                </li>
+            </ul>
+
+            <div class="task-card__description">
+                <h2 class="task-card__title">Описание</h2>
+                <textarea name="task_description" placeholder="Добавьте описание к задаче"></textarea>
+            </div>
+
+            <div class="task-card__links">
+                <h2 class="task-card__title">Ссылки <button type="button" class="task-card__plus"></button></h2>
+
+                <div class="task-card__links-item">
+                    <input type="text" name="task_link_url" placeholder="Введите url">
+                    <input type="text" name="task_link_desc" placeholder="Добавьте описание к ссылке">
+                </div>
+            </div>
+
+            <div class="task-card__files">
+                <h2 class="task-card__title">Файлы</h2>
+                <label class="task-card__plus task-card__plus--circle"><input type="file" name="add_file"></label>
+            </div>
+
+            <div class="task-card__check-list">
+                <h2 class="task-card__title">Чеклист <button type="button" class="task-card__plus"></button></h2>
+
+                <ul class="task-card__list">
+                    <li class="task-card__item">
+                        <div class="task-card__checkbox">
+                            <div class="checkbox">
+                                <input type="checkbox" name="remember" disabled>
+                                <span>
+                                    <input type="text" name="checkbox_name" maxlength="64" placeholder="Введите текст пункта">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="task-card__icons">
+                            <button type="button" class="icon icon--edit"></button>
+                            <button type="button" class="icon icon--trash"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="task-card__buttons">
+                <button type="button" class="button button--border">Отменить</button>
+                <button type="submit" class="button button--disabled">Сохранить</button>
+            </div>
+
+        </section>
+    </form>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>VueWork - попап задачи</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <div class="task-card">
+        <section class="task-card__wrapper">
+            <button class="task-card__close" type="button"></button>
+
+            <h1 class="task-card__name">
+                <span>Утвердить критерии</span>
+                <input type="text" name="task_name" maxlength="37" value="Утвердить критерии">
+                <button type="button" class="icon icon--edit"></button>
+            </h1>
+
+            <p class="task-card__date">#123456 создана 10 минут назад</p>
+
+            <ul class="task-card__params">
+                <li>
+                    Участник:
+                    <div class="task-card__participant">
+                        <button type="button" class="task-card__user">
+                            <img src="img/user1.jpg" alt="Вика Некрасова">
+                            Вика Некрасова
+                        </button>
+
+                        <div class="task-card__users">
+                            <ul class="users-list">
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user1.jpg" alt="Вика Некрасова" width="30" height="30">
+                                        Вика Некрасова
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user2.jpg" alt="Петр Хрустиков" width="30" height="30">
+                                        Петр Хрустиков
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <img src="img/user3.jpg" alt="Михаил Валерьевич Тян-Шанский" width="30" height="30">
+                                        Михаил Валерьевич Тян-Шанский
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="users-list__user">
+                                        <span>N</span>
+                                        Наталья Железнова
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Срок:
+                    <button type="button" class="task-card__link task-card__link--text">19.10.2020 19:00</button>
+                </li>
+            </ul>
+
+            <div class="task-card__description">
+                <h2 class="task-card__title">Описание</h2>
+                <p>Проверить и утвердить критерии качества</p>
+            </div>
+
+            <div class="task-card__links">
+                <h2 class="task-card__title">Ссылки <button type="button" class="task-card__plus"></button></h2>
+
+                <div class="task-card__links-item task-card__links-item--border_none">
+                    <a href="#">Ссылка на гугл-диск с маркетинговыми материалами</a>
+                </div>
+            </div>
+
+            <div class="task-card__files">
+                <h2 class="task-card__title">Файлы</h2>
+                <!-- Если есть файлы - просто линк на них как тот что с 72 по 74 строку -->
+                <p>Нет прикрепленных файлов</p>
+            </div>
+
+            <div class="task-card__check-list">
+                <h2 class="task-card__title">Чеклист <button type="button" class="task-card__plus"></button></h2>
+
+                <ul class="task-card__list">
+                    <li class="task-card__item">
+                        <div class="task-card__checkbox">
+                            <label class="checkbox">
+                                <!--
+                                    Если выводим текст чекбокса - скрываем input, убираем disabled с checkbox
+                                    Если выводим input - ставим disabled на checkbox и убираем текст
+                                -->
+                                <input type="checkbox" name="remember">
+                                <span>
+                                    <!-- <input type="text" name="checkbox_name" maxlength="64" placeholder="Введите текст пункта"> -->
+                                    Текст
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="task-card__icons">
+                            <button type="button" class="icon icon--edit"></button>
+                            <button type="button" class="icon icon--trash"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Открываем кнопки если редактируем карточку...? или редактировать уже готовую карточку будем на-лету?
+            <div class="task-card__buttons">
+                <button type="button" class="button button--border">Отменить</button>
+                <button type="button" class="button">Сохранить</button>
+            </div>
+            -->
+
+            <div class="task-card__comments">
+                <h2 class="task-card__title">Комментарии</h2>
+                <div class="comments">
+                    <ul class="comments__list">
+                        <li class="comments__item">
+                            <div class="comments__user">
+                                <img src="img/user1.jpg" alt="Вика Некрасова" width="30" height="30">
+                                Вика Некрасова
+                            </div>
+                            <p><strong>@petr</strong> Окей. Посмотрю</p>
+                        </li>
+                        <li class="comments__item">
+                            <div class="comments__user">
+                                <img src="img/user2.jpg" alt="Петр Хрустиков" width="30" height="30">
+                                Петр Хрустиков
+                            </div>
+                            <p>Добавил несколько замечаний к критерию Б10</p>
+                        </li>
+                    </ul>
+
+                    <form action="#" class="comments__form" method="post">
+                        <textarea name="comment_text" placeholder="Введите текст комментария"></textarea>
+                        <button type="submit">Написать комментарий</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>

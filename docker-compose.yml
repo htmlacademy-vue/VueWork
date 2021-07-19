@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+      POSTGRES_PASSWORD: psql
+    ports:
+      - 5432:5432
+
+  backend:
+    build: src/backend
+    command: npm start
+    volumes:
+      - ./src/backend:/backend
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+
+  frontend:
+    build: src/frontend
+    command: npm run serve
+    environment:
+      PORT: '8080'
+      HOST: '0.0.0.0'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./src/frontend:/frontend

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>VueWork - главная администратора</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html" class="logo">
+                <img src="img/logo.svg" alt="VueWork logo" width="147" height="23">
+            </a>
+        </div>
+
+        <form action="#" class="header__search">
+            <input type="search" name="search" required placeholder="Поиск">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="#" class="header__create-task">Создать карточку</a>
+
+        <a href="#" class="header__user">
+            <img src="img/admin.jpg" alt="Администратор" width="40" height="40">
+        </a>
+
+        <div class="header__menu">
+            <div class="user-menu">
+                <img src="img/admin.jpg" width="56" height="56" alt="Администратор">
+                <span>Администратор</span>
+                <a href="#" class="user-menu__link">Мой аккаунт</a>
+                <a href="#" class="user-menu__link">Выйти</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+
+        <!-- для скрытия бэклога надо добавить backlog--hide -->
+        <section class="backlog">
+            <button class="backlog__title">
+                <span>Бэклог</span>
+            </button>
+
+            <div class="backlog__scroll">
+
+                <div class="backlog__collapse">
+
+                    <button type="button" class="backlog__user">
+                        <div class="backlog__account">
+                            <img src="img/user2.jpg" alt="Петр Хрустиков" width="32" height="32">
+                            Петр Хрустиков
+                        </div>
+
+                        <div class="backlog__counter">10</div>
+                        <span class="backlog__arrow"></span>
+                    </button>
+
+                </div>
+
+                <div class="backlog__collapse">
+
+                    <button type="button" class="backlog__user">
+                        <div class="backlog__account">
+                            <img src="img/user1.jpg" alt="Вика Некрасова" width="32" height="32">
+                            Вика Некрасова
+                        </div>
+
+                        <div class="backlog__counter">5</div>
+                        <span class="backlog__arrow backlog__arrow--top"></span>
+                    </button>
+
+                    <div class="backlog__target-area">
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                    <span class="task__status task__status--color task__status--alert"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--red"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Написать письмо подрядчику “Coffe Brand”</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Макет DS для Юры</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--green"></span>
+                                    <span class="task__status task__status--alert"></span>
+                                </div>
+
+                                <h4 class="task__title">Подготовить план развития стажера Юлии Х.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--yellow">менеджмент</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--pink">HR</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="backlog__task">
+
+                            <div class="task task--backlog">
+                                <h4 class="task__title">Новые пуши в СБП</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="backlog__collapse">
+
+                    <button type="button" class="backlog__user">
+                        <div class="backlog__account">
+                            <img src="img/user3.jpg" alt="Михаил Валерьевич Тян-Шанский" width="32" height="32">
+                            Михаил Валерьевич Тян-Шанский
+                        </div>
+
+                        <div class="backlog__counter">6</div>
+                        <span class="backlog__arrow"></span>
+                    </button>
+
+                </div>
+
+                <div class="backlog__collapse">
+
+                    <button type="button" class="backlog__user">
+                        <div class="backlog__account">
+                            <img src="img/user4.jpg" alt="Анастасия Овсянкина" width="32" height="32">
+                            Анастасия Овсянкина
+                        </div>
+
+                        <div class="backlog__counter">2</div>
+                        <span class="backlog__arrow"></span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="desk">
+            <div class="desk__header">
+                <h1 class="desk__title">Design Coffee Lab</h1>
+
+                <button class="desk__add" type="button">Добавить столбец</button>
+
+                <div class="desk__filters">
+
+                    <div class="desk__user-filter">
+                        <ul class="user-filter">
+                            <li class="user-filter__item">
+                                <a class="user-filter__button">
+                                    <img src="img/user1.jpg" alt="Вика Некрасова" width="24" height="24">
+                                </a>
+                            </li>
+                            <li class="user-filter__item">
+                                <a class="user-filter__button">
+                                    <span>А</span>
+                                </a>
+                            </li>
+                            <li class="user-filter__item">
+                                <a class="user-filter__button">
+                                    <img src="img/user3.jpg" alt="Михаил Валерьевич Тян-Шанский" width="24" height="24">
+                                </a>
+                            </li>
+                            <li class="user-filter__item">
+                                <a class="user-filter__button">
+                                    <span>В</span>
+                                </a>
+                            </li>
+                            <li class="user-filter__item">
+                                <a class="user-filter__button">
+                                    <img src="img/user4.jpg" alt="Анастасия Овсянкина" width="24" height="24">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="desk__meta-filter">
+                        <ul class="meta-filter">
+                            <li class="meta-filter__item">
+                                <a class="meta-filter__status meta-filter__status--color meta-filter__status--green" title="Важно, не срочно"></a>
+                            </li>
+                            <li class="meta-filter__item">
+                                <a class="meta-filter__status meta-filter__status--color meta-filter__status--orange" title="Срочно, не важно"></a>
+                            </li>
+                            <li class="meta-filter__item">
+                                <a class="meta-filter__status meta-filter__status--color meta-filter__status--red" title="Срочно, важно"></a>
+                            </li>
+                            <li class="meta-filter__item">
+                                <a class="meta-filter__status meta-filter__status--time" title="Дедлайн"></a>
+                            </li>
+                            <li class="meta-filter__item">
+                                <a class="meta-filter__status meta-filter__status--alert" title="Просрочено"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="desk__columns">
+                <div class="column">
+                    <h2 class="column__name">
+                        Аналитика
+                        <button class="column__button column__update icon icon--edit" type="button"></button>
+                        <button class="column__button column__delete icon icon--trash" type="button"></button>
+                    </h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--orange"></span>
+                                </div>
+
+                                <h4 class="task__title">Проверить реализацию кредита</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--green"></span>
+                                    <span class="task__status task__status--alert"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Юлии Х.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--yellow">менеджмент</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--pink">HR</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Виктора Р.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--yellow">менеджмент</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--pink">HR</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="column">
+                    <h2 class="column__name">В работе</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--red"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Написать письмо подрядчику “Coffe Brand”</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <h4 class="task__title">Новые пуши в СБП</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <h2 class="column__name">В работе</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--red"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Написать письмо подрядчику “Coffe Brand”</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <h4 class="task__title">Новые пуши в СБП</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <h2 class="column__name">В работе</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--red"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Написать письмо подрядчику “Coffe Brand”</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <h4 class="task__title">Новые пуши в СБП</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <h2 class="column__name">В работе</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--red"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Написать письмо подрядчику “Coffe Brand”</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+                                <h4 class="task__title">Новые пуши в СБП</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+                                <h4 class="task__title">Подготовить план развития стажера Олеси П.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h2 class="column__name">Ждет приемки</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <h4 class="task__title">Отчет по бюджету 2021</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--green">маркетинг</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Настя Овсянкина
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--green"></span>
+                                    <span class="task__status task__status--time"></span>
+                                </div>
+
+                                <h4 class="task__title">Подготовить план развития стажера Юлии Х.</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--orange">аналитика</span>
+                                    </li>
+                                    <li>
+                                        <span class="tag tag--blue">ui</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h2 class="column__name">Готово</h2>
+
+                    <div class="column__target-area">
+
+                        <div class="column__task">
+
+                            <div class="task">
+
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Вика Некрасова
+                                </div>
+
+                                <h4 class="task__title">Макет DS для Юры</h4>
+                            </div>
+
+                        </div>
+
+                        <div class="column__task">
+                            <div class="task">
+                                <div class="task__user">
+                                    <div class="task__avatar">
+                                        <img src="img/user1.jpg" class="task__avatar" width="20" height="20" alt="Вика Некрасова">
+                                    </div>
+                                    Макс Печкин
+                                </div>
+
+                                <div class="task__statuses">
+                                    <span class="task__status task__status--color task__status--green"></span>
+                                </div>
+
+                                <h4 class="task__title">Презентация годового отчета</h4>
+
+                                <ul class="task__tags">
+                                    <li>
+                                        <span class="tag tag--violet">банк</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <ul class="alerts alerts--hidden">
+        <li class="alerts__item alerts__item--success">Задача создана</li>
+        <li class="alerts__item alerts__item--error">Действие отклонено</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.user-menu {
+  width: 240px;
+  padding-top: 32px;
+  padding-bottom: 24px;
+
+  text-align: center;
+
+  border-radius: 6px 0 0 6px;
+  background-color: $white-900;
+  box-shadow: 0 4px 8px $shadow-500;
+
+  img {
+    display: block;
+
+    margin: 0 auto;
+  }
+
+  span {
+    @include m-s18-h21;
+
+    display: block;
+
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+
+    color: $black-900;
+    border-bottom: 1px solid $blue-gray-50;
+  }
+
+  &__link {
+    @include m-s14-h21;
+
+    display: block;
+
+    margin-top: 16px;
+
+    color: $blue-gray-600;
+  }
+}

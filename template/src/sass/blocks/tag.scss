@@ -1,0 +1,31 @@
+.tag {
+  @include r-s10-h12;
+
+  padding: 4px 8px;
+
+  border-radius: 100px;
+
+  &--pink {
+    background-color: $pink-300;
+  }
+
+  &--orange {
+    background-color: $yellow-300;
+  }
+
+  &--green {
+    background-color: $green-100;
+  }
+
+  &--yellow {
+    background-color: $yellow-100;
+  }
+
+  &--blue {
+    background-color: $blue-300;
+  }
+
+  &--violet {
+    background-color: $pink-200;
+  }
+}

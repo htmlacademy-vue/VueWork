@@ -1,0 +1,27 @@
+.icon {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  border: none;
+  background-color: transparent;
+
+  &--edit {
+    width: 14px;
+    height: 14px;
+
+    background-image: url("../img/icon-pencil.svg");
+    background-size: cover;
+  }
+
+  &--trash {
+    width: 14px;
+    height: 18px;
+
+    background-image: url("../img/icon-trash.svg");
+    background-size: cover;
+  }
+}

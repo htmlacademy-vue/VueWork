@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Администратор",
+    "email": "admin@example.com",
+    "isAdmin": true,
+    "password": "admin",
+    "avatar": "/public/admin.jpg"
+  },
+  {
+    "name": "Василий Ложкин",
+    "email": "vasia@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user5.jpg"
+  },
+  {
+    "name": "Сергей Есенин",
+    "email": "seresen@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user2.jpg"
+  },
+  {
+    "name": "Алексей Яшин",
+    "email": "yashin@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user3.jpg"
+  },
+  {
+    "name": "Игорь Пятин",
+    "email": "five@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user6.jpg"
+  },
+  {
+    "name": "Елена Шаповалова",
+    "email": "six@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user1.jpg"
+  },
+  {
+    "name": "Андрей Ильин",
+    "email": "seven@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user7.jpg"
+  },
+  {
+    "name": "Диана Аверина",
+    "email": "eight@example.com",
+    "isAdmin": false,
+    "password": "123456",
+    "avatar": "/public/user4.jpg"
+  }
+]

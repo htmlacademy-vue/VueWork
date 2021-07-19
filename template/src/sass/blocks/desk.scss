@@ -1,0 +1,80 @@
+.desk {
+  $bl: ".desk";
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  width: calc(100% - 400px);
+  padding-top: 27px;
+
+  background-color: $white-900;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-bottom: 24px;
+    padding: 0 17px;
+  }
+
+  &__title {
+    @include m-s24-h21;
+
+    margin: 0;
+    margin-right: auto;
+
+    color: $black-900;
+  }
+
+  &__add {
+    @include m-s10-h12;
+
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+    padding-left: 32px;
+
+    cursor: pointer;
+
+    color: $blue-gray-600;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    &::before {
+      @include p_center-v;
+
+      width: 23px;
+      height: 23px;
+
+      content: "";
+
+      background-image: url("../img/icon-add.svg");
+    }
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__user-filter {
+    margin-right: 40px;
+  }
+
+  &__columns {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-grow: 1;
+
+    border-top: 1px solid $blue-gray-200;
+  }
+}

@@ -1,0 +1,58 @@
+.sign-form {
+  @include pf_center-all;
+
+  display: none;
+
+  width: 628px;
+
+  background-color: $white-900;
+  box-shadow: 0 4px 8px $shadow-500;
+
+  &__shape {
+    padding-right: 64px;
+    padding-bottom: 64px;
+    padding-left: 64px;
+  }
+
+  &__header {
+    padding: 25px 64px;
+
+    background-color: $blue-600;
+  }
+
+  &__title {
+    @include m-s24-h21;
+
+    margin: 30px 0;
+
+    text-align: center;
+
+    color: $blue-gray-600;
+  }
+
+  &__input {
+    display: block;
+
+    margin-bottom: 16px;
+  }
+
+  &__checkbox {
+    margin-top: 20px;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 30px;
+  }
+
+  &__link {
+    color: $blue-600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

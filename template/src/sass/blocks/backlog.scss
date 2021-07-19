@@ -1,0 +1,166 @@
+.backlog {
+  $bl: ".backlog";
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  min-width: 400px;
+  max-width: 400px;
+  padding-top: 16px;
+
+  background-color: $blue-gray-50;
+
+  &__title {
+    position: relative;
+
+    width: 85px;
+    height: 26px;
+    margin-bottom: 5px;
+    margin-left: 12px;
+    padding-left: 28px;
+
+    cursor: pointer;
+    text-align: left;
+
+    color: $blue-gray-600;
+    border: none;
+    background-color: transparent;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      width: 24px;
+      height: 24px;
+
+      content: "";
+      transition: 0.3s;
+      transform: translateY(-53%) rotate(180deg);
+
+      background-image: url("../img/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    span {
+      @include m-s14-h21;
+    }
+  }
+
+  &--hide {
+    min-width: 50px;
+    max-width: 50px;
+
+    #{$bl}__title {
+      span {
+        display: none;
+      }
+
+      &::before {
+        transform: translateY(-53%);
+      }
+    }
+
+    #{$bl}__scroll {
+      visibility: hidden;
+      overflow: hidden;
+    }
+  }
+
+  &__scroll {
+    overflow-y: auto;
+    flex-grow: 1;
+
+    height: 1px;
+    padding-bottom: 20px;
+  }
+
+  &__collapse {
+    padding-bottom: 1px;
+
+    border-bottom: 1px solid $blue-gray-200;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 15px 12px;
+
+    cursor: pointer;
+    text-align: left;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    &:active {
+      color: inherit;
+    }
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+
+    max-width: 80%;
+    margin-right: auto;
+
+    @include m-s18-h21;
+
+    img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+
+      border-radius: 50%;
+    }
+  }
+
+  &__counter {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    padding-top: 6px;
+
+    text-align: center;
+
+    border-radius: 50%;
+    background-color: $blue-gray-100;
+
+    @include m-s18-h21;
+  }
+
+  &__arrow {
+    width: 10px;
+    height: 30px;
+    margin: 0;
+    margin-left: 18px;
+    padding: 0;
+
+    cursor: pointer;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url("../img/icon-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--top {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__task {
+    margin-right: 12px;
+    margin-bottom: 11px;
+    margin-left: 12px;
+  }
+}

@@ -1,0 +1,130 @@
+.task {
+  $bl: ".task";
+
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 8px;
+
+  cursor: pointer;
+
+  border-radius: 6px;
+  background-color: $white-900;
+  box-shadow: 0 4px 8px $shadow-500;
+
+  &--backlog {
+    box-shadow: none;
+
+    #{$bl}__title {
+      order: -2;
+
+      max-width: 290px;
+      margin-top: 0;
+      margin-right: auto;
+    }
+
+    #{$bl}__statuses {
+      order: -1;
+
+      margin-left: 20px;
+    }
+  }
+
+  &__user {
+    @include m-s10-h21;
+
+    display: flex;
+    align-items: center;
+
+    max-width: 80%;
+    margin-right: auto;
+  }
+
+  &__avatar {
+    margin-right: 4px;
+
+    img {
+      display: block;
+
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__statuses {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+
+    height: 16px;
+    margin-top: 3px;
+  }
+
+  &__status {
+    margin-left: 8px;
+
+    border-radius: 50%;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &--color {
+      width: 8px;
+      height: 8px;
+    }
+
+    &--green {
+      background-color: $green-600;
+    }
+
+    &--orange {
+      background-color: $orange-600;
+    }
+
+    &--red {
+      background-color: $red-600;
+    }
+
+    &--time {
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../img/status-time.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--alert {
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../img/status-alert.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__title {
+    @include r-s14-h21;
+
+    width: 100%;
+    margin-top: 9px;
+    margin-bottom: 0;
+  }
+
+  &__tags {
+    @include clear-list;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-top: 5px;
+
+    li {
+      margin-top: 4px;
+      margin-right: 4px;
+    }
+  }
+}

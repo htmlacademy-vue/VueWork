@@ -1,0 +1,36 @@
+@import "libs/normalize.scss";
+@import "fonts.scss";
+
+// mixins
+@import "mixins/m_center.scss";
+@import "mixins/m_clear-list.scss";
+
+// ds-system
+@import "ds-system/ds-colors.scss";
+@import "ds-system/ds-typography.scss";
+@import "scaffolding.scss";
+
+// layout
+@import "layout/header.scss";
+@import "layout/content.scss";
+@import "layout/sign-form.scss";
+@import "layout/task-card.scss";
+@import "layout/user-params.scss";
+
+// blocks
+@import "blocks/icon.scss";
+@import "blocks/logo.scss";
+@import "blocks/desk.scss";
+@import "blocks/user-filter.scss";
+@import "blocks/meta-filter.scss";
+@import "blocks/column.scss";
+@import "blocks/task.scss";
+@import "blocks/tag.scss";
+@import "blocks/backlog.scss";
+@import "blocks/user-menu.scss";
+@import "blocks/users-list.scss";
+@import "blocks/comments.scss";
+@import "blocks/alerts.scss";
+@import "blocks/input.scss";
+@import "blocks/checkbox.scss";
+@import "blocks/button.scss";
