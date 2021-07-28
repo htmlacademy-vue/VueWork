@@ -44,9 +44,10 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+import { moveTask } from '@/common/mixins';
 import AppDrop from '@/common/components/AppDrop';
 import TaskCard from '@/modules/tasks/components/TaskCard';
-import { moveTask } from '@/common/mixins';
 
 export default {
   name: 'DeskColumn',
@@ -54,26 +55,28 @@ export default {
     AppDrop,
     TaskCard
   },
+
   mixins: [moveTask],
+
   props: {
     column: {
       type: Object,
       required: true
-    },
-    tasks: {
-      type: Array,
-      required: true
     }
   },
+
   data() {
     return {
       columnTitle: this.column.title,
       isInputShowed: false
     };
   },
+
   computed: {
+    ...mapState('Tasks', ['tasks']),
+    ...mapGetters('Tasks', ['filteredTasks']),
     columnTasks() {
-      return this.tasks
+      return this.filteredTasks
         .filter(task => task.columnId === this.column.id)
         .sort((a, b) => a.sortOrder - b.sortOrder);
     }
@@ -85,6 +88,7 @@ export default {
       await this.$nextTick();
       this.$refs.title.focus();
     },
+
     updateInput() {
       this.isInputShowed = false;
       if (this.column.title === this.columnTitle) {

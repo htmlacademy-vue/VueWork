@@ -168,11 +168,12 @@ import TaskCardCreatorTags
   from '@/modules/tasks/components/TaskCardCreatorTags';
 import { STATUSES } from '@/common/constants';
 import { createUUIDv4, getTimeAgo } from '@/common/helpers';
+import { mapActions, mapGetters } from 'vuex';
 import { validator } from '@/common/mixins';
 import { taskCardName } from '@/common/mixins';
+import { createNewDate } from '@/common/helpers';
 import taskStatuses from '@/common/enums/taskStatuses';
 import { cloneDeep } from 'lodash';
-import { createNewDate } from '@/common/helpers';
 
 const createNewTask = () => ({
   userId: null,
@@ -229,6 +230,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('Tasks', ['sidebarTasksCount']),
     timeAgo() {
       return getTimeAgo(this.task?.dueDate);
     }
@@ -250,29 +252,78 @@ export default {
     this.$refs.dialog.focus();
   },
   methods: {
+    ...mapActions('Tasks', {
+      tasksPost: 'post',
+      tasksPut: 'put',
+      taskDelete: 'delete'
+    }),
+    ...mapActions('Ticks', {
+      ticksPost: 'post',
+      ticksPut: 'put',
+      tickDelete: 'delete'
+    }),
     async submit() {
       if (!this.$validateFields(this.task, this.validations)) {
         this.isFormValid = false;
         return;
       }
-      this.$emit(`${this.taskToEdit ? 'editTask' : 'addTask'}`, this.task);
+      let { ticks, ...rest } = this.task;
+      let id = this.task.id;
+      if (this.taskToEdit) {
+        await this.tasksPut(rest);
+      } else {
+        const task = await this.tasksPost({
+          ...rest,
+          sortOrder: this.sidebarTasksCount
+        });
+        id = task.id;
+      }
+      // Note: submit all ticks with task id
+      await this.submitTicks(id, ticks);
+      let message = `Задача ${this.task.title}`;
+      message += this.taskToEdit ? ' обновлена' : ' создана';
+      this.$notifier.success(message);
       this.closeDialog();
+    },
+    async submitTicks(taskId, ticks) {
+      const promises = ticks
+        .map(tick => {
+          if (!tick.text) {
+            return;
+          }
+          delete tick.uuid;
+          tick.taskId = taskId;
+          return tick.id
+            ? this.ticksPut(tick)
+            : this.ticksPost(tick);
+        });
+      await Promise.all(promises);
     },
     createTick() {
       this.task.ticks = [...this.task.ticks, createNewTick()];
     },
     async updateTick(tick) {
-      const index = this.task.ticks
-        .findIndex(({ uuid }) => tick.uuid === uuid);
-      if (~index) {
-        this.task.ticks.splice(index, 1, tick);
+      if (tick.id) {
+        this.ticksPut(tick);
+      } else {
+        const index = this.task.ticks
+          .findIndex(({ uuid }) => tick.uuid === uuid);
+        if (~index) {
+          this.task.ticks.splice(index, 1, tick);
+        }
       }
     },
-    async removeTick({ uuid }) {
-      this.task.ticks = this.task.ticks.filter(tick => tick.uuid !== uuid);
+    async removeTick({ id, uuid }) {
+      if (id) {
+        await this.tickDelete(id);
+        this.task.ticks = this.task.ticks.filter(tick => tick.id !== id);
+      } else {
+        this.task.ticks = this.task.ticks.filter(tick => tick.uuid !== uuid);
+      }
     },
     async removeTask() {
-      this.$emit('deleteTask', this.task.id);
+      await this.taskDelete(this.taskToEdit?.id);
+      this.$notifier.success('Задача удалена');
       this.$router.push('/').catch(() => {});
     },
     setStatus(status) {

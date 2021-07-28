@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TaskCardView :tasks="tasks" />
+    <TaskCardView />
   </div>
 </template>
 
@@ -9,13 +9,6 @@ import TaskCardView from '@/modules/tasks/components/TaskCardView';
 
 export default {
   name: 'TaskView',
-  layout: 'AppLayoutMain',
-  components: { TaskCardView },
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    }
-  }
+  components: { TaskCardView }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <section class="desk">
-    <router-view :tasks="tasks" />
+    <router-view />
     <div class="desk__header">
       <div class="desk__header-top">
         <h1 class="desk__title">
@@ -23,7 +23,7 @@
               :title="user.name"
               class="user-filter__item"
               :class="{ active: filters.users.some(id => id === user.id) }"
-              @click="applyFilters(user.id, 'users')"
+              @click="filterTasks(user.id, 'users')"
             >
               <a class="user-filter__button">
                 <img
@@ -43,7 +43,7 @@
               :key="value"
               class="meta-filter__item"
               :class="{ active: filters.statuses.some(s => s === value) }"
-              @click="applyFilters(value, 'statuses')"
+              @click="filterTasks(value, 'statuses')"
             >
               <a
                 class="meta-filter__status"
@@ -64,10 +64,8 @@
         v-for="column in columns"
         :key="column.id"
         :column="column"
-        :tasks="tasks"
-        @update="updateColumn"
+        @update="put($event)"
         @delete="deleteColumn"
-        @updateTasks="$emit('updateTasks', $event)"
       />
     </div>
     <p
@@ -80,51 +78,52 @@
 </template>
 
 <script>
-import columns from '@/static/columns.json';
-import users from '@/static/users.json';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import { STATUSES } from '@/common/constants';
 import DeskColumn from '@/modules/columns/components/DeskColumn';
-import { uniqueId } from 'lodash';
+import { UPDATE_FILTERS } from '@/store/mutations-types';
 
 export default {
   name: 'IndexHome',
-  components: { DeskColumn },
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    },
-    filters: {
-      type: Object,
-      required: true
-    }
+  components: {
+    DeskColumn
   },
+
   data() {
     return {
-      columns,
-      users,
-      STATUSES,
-      newColumnTitle: 'Новый столбец'
+      newColumnTitle: 'Новый столбец',
+      STATUSES
     };
   },
+  computed: {
+    ...mapState(['users']),
+    ...mapState('Columns', ['columns']),
+    ...mapState('Tasks', ['filters'])
+  },
   methods: {
-    addColumn() {
-      this.columns = [
-        ...this.columns,
-        { id: uniqueId('column_'), title: this.newColumnTitle }
-      ];
+    ...mapActions('Columns', ['post', 'put', 'delete']),
+    ...mapMutations('Tasks', {
+      updateFilters: UPDATE_FILTERS
+    }),
+    async addColumn() {
+      await this.post({ title: this.newColumnTitle });
+      // Note: move horizontal scroll to the new column
+      this.$refs.columns.scrollLeft = this.$refs.columns.scrollWidth;
     },
-    updateColumn(column) {
-      const index = this.columns.findIndex(({ id }) => id === column.id);
-      if (~index) {
-        this.columns.splice(index, 1, column);
-      }
-    },
+
     deleteColumn(id) {
-      this.columns = this.columns.filter(column => column.id !== id);
+      this.delete(id);
     },
-    applyFilters(item, entity) {
-      this.$emit('applyFilters', { item, entity });
+
+    filterTasks(item, entity) {
+      const resultValues = [...this.filters[entity]];
+      const itemIndex = resultValues.findIndex(el => el === item);
+      ~itemIndex
+        ? resultValues.splice(itemIndex, 1)
+        : resultValues.push(item);
+      this.updateFilters({
+        [entity]: resultValues
+      });
     }
   }
 };

@@ -37,8 +37,8 @@
               :key="task.id"
               :task="task"
               class="backlog__task"
-              @click="$router.push({ path: `/${task.id}` })"
               @drop="$moveTask($event, task)"
+              @click="$router.push({ path: `/${task.id}` })"
             />
           </div>
         </div>
@@ -48,32 +48,31 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+import { moveTask } from '@/common/mixins';
 import AppDrop from '@/common/components/AppDrop';
 import TaskCard from '@/modules/tasks/components/TaskCard';
-import { moveTask } from '@/common/mixins';
 
 export default {
   name: 'AppLayoutMainSidebar',
-  components: { TaskCard, AppDrop },
-  mixins: [moveTask],
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    },
-    filters: {
-      type: Object,
-      required: true
-    }
+  components: {
+    AppDrop,
+    TaskCard
   },
+
+  mixins: [moveTask],
+
   data() {
     return {
       backlogIsHidden: false
     };
   },
+
   computed: {
+    ...mapState('Tasks', ['tasks']),
+    ...mapGetters('Tasks', ['filteredTasks']),
     sidebarTasks() {
-      return this.tasks
+      return this.filteredTasks
         .filter(task => !task.columnId)
         .sort((a, b) => a.sortOrder - b.sortOrder);
     }

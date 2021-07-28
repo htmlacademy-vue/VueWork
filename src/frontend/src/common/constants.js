@@ -29,6 +29,8 @@ export const MONTH_IN_SEC = DAY_IN_SEC * 30;
 export const YEAR_IN_SEC = DAY_IN_SEC * 365;
 export const DAY_IN_MILLISEC = DAY_IN_SEC * SEC;
 
+export const MESSAGE_LIVE_TIME = 3 * SEC;
+
 export const MOVE = 'move';
 export const TAG_SEPARATOR = '#';
 export const DATA_TRANSFER_PAYLOAD = 'payload';
