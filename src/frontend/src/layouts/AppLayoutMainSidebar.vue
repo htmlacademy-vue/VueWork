@@ -2,7 +2,7 @@
   <AppDrop
     class="backlog"
     :class="{ 'backlog--hide': backlogIsHidden }"
-    @drop="moveTask"
+    @drop="$moveTask"
   >
     <button
       class="backlog__title"
@@ -37,7 +37,8 @@
               :key="task.id"
               :task="task"
               class="backlog__task"
-              @drop="moveTask($event, task)"
+              @click="$router.push({ path: `/${task.id}` })"
+              @drop="$moveTask($event, task)"
             />
           </div>
         </div>
@@ -48,14 +49,13 @@
 
 <script>
 import AppDrop from '@/common/components/AppDrop';
-import taskStatuses from '@/common/enums/taskStatuses';
 import TaskCard from '@/modules/tasks/components/TaskCard';
-import { addActive, getTargetColumnTasks } from '@/common/helpers';
-import { cloneDeep } from 'lodash';
+import { moveTask } from '@/common/mixins';
 
 export default {
   name: 'AppLayoutMainSidebar',
   components: { TaskCard, AppDrop },
+  mixins: [moveTask],
   props: {
     tasks: {
       type: Array,
@@ -68,7 +68,6 @@ export default {
   },
   data() {
     return {
-      taskStatuses,
       backlogIsHidden: false
     };
   },
@@ -77,28 +76,6 @@ export default {
       return this.tasks
         .filter(task => !task.columnId)
         .sort((a, b) => a.sortOrder - b.sortOrder);
-    }
-  },
-  methods: {
-    moveTask(active, toTask) {
-      // Note: prevent update if task is not moving
-      if (toTask && active.id === toTask.id) {
-        return;
-      }
-
-      const toColumnId = this.column ? this.column.id : null;
-      const targetColumnTasks = getTargetColumnTasks(toColumnId, this.tasks);
-      const activeClone = cloneDeep({ ...active, columnId: toColumnId });
-      const resultTasks = addActive(activeClone, toTask, targetColumnTasks);
-      const tasksToUpdate = [];
-
-      resultTasks.forEach((task, index) => {
-        if (task.sortOrder !== index || task.id === active.id) {
-          const newTask = cloneDeep({ ...task, sortOrder: index });
-          tasksToUpdate.push(newTask);
-        }
-      });
-      this.$emit('updateTasks', tasksToUpdate);
     }
   }
 };
