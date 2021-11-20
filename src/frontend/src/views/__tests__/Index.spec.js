@@ -5,13 +5,25 @@ import { SET_ENTITY } from '@/store/mutations-types';
 import users from '@/static/users';
 import columns from '@/static/columns';
 import { STATUSES } from '@/common/constants';
-import Index from '@/views/Index.vue';
+import Index from '@/views/index/Index.vue';
 import AppIcon from '@/common/components/AppIcon';
-import { authenticateUser } from '@/common/helpers';
 
 const localVue = createLocalVue();
 localVue.component('AppIcon', AppIcon);
 localVue.use(Vuex);
+
+const authenticateUser = store => {
+  store.commit(SET_ENTITY, {
+    module: 'Auth',
+    entity: 'user',
+    value: users[0]
+  });
+  store.commit(SET_ENTITY, {
+    module: 'Auth',
+    entity: 'isAuthenticated',
+    value: true
+  });
+};
 
 const createColumns = store => {
   store.commit(SET_ENTITY, {

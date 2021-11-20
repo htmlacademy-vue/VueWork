@@ -8,9 +8,11 @@
 <script>
 import TaskCardCreator from '@/modules/tasks/components/TaskCardCreator';
 import { TASK_DETAILS_CONFIG } from '@/common/queryConfig';
+import { auth, isAdmin } from '@/middlewares';
 
 export default {
   name: 'TaskEdit',
+  middlewares: [auth, isAdmin],
   components: {
     TaskCardCreator
   },

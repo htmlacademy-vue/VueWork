@@ -67,9 +67,11 @@
 
 <script>
 import validator from '@/common/mixins/validator';
+import { isLoggedIn } from '@/middlewares';
 
 export default {
   name: 'Login',
+  middlewares: [isLoggedIn],
   mixins: [validator],
   data: () => ({
     email: '',

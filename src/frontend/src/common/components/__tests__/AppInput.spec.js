@@ -26,18 +26,18 @@ describe('AppInput', () => {
     expect(wrapper.find('input').element.value).toBe(propsData.value);
   });
 
-  it('It emits an input event when typing', async () => {
+  it('It emits an input event when typing', () => {
     createComponent({ propsData });
     let input = wrapper.find('input');
-    await input.trigger('input');
+    input.trigger('input');
     expect(wrapper.emitted().input).toBeTruthy();
   });
 
-  it('emits the current input value when typing', async () => {
+  it('emits the current input value when typing', () => {
     createComponent({ propsData });
     let input = wrapper.find('input');
     input.element.value = 'test';
-    await input.trigger('input');
+    input.trigger('input');
     expect(wrapper.emitted().input[0][0]).toEqual('test');
   });
 

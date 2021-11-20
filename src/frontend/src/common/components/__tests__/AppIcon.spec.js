@@ -17,9 +17,9 @@ describe('AppIcon', () => {
     wrapper.destroy();
   });
 
-  it('raises the click event on click', async () => {
+  it('raises the click event on click', () => {
     createComponent({ listeners });
-    await wrapper.find('button').trigger('click');
+    wrapper.find('button').trigger('click');
     expect(listeners.click).toHaveBeenCalled();
   });
 });

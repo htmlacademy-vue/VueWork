@@ -1,5 +1,8 @@
 import notificationTypes from '@/common/enums/notificationTypes';
 
+// eslint-disable-next-line max-len
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
+
 export default class Notifier {
   #store;
   constructor(store) {

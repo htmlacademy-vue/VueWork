@@ -25,9 +25,9 @@ describe('AppButton', () => {
     expect(wrapper.html()).toContain(slots.default);
   });
 
-  it('raises the click event on click', async () => {
+  it('raises the click event on click', () => {
     createComponent({ listeners });
-    await wrapper.find('button').trigger('click');
+    wrapper.find('button').trigger('click');
     expect(listeners.click).toHaveBeenCalled();
   });
 
