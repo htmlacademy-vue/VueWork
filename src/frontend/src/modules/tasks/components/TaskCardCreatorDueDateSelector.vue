@@ -14,7 +14,6 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
-import { DAY_IN_MILLISEC } from '@/common/constants';
 
 export default {
   name: 'TaskCardCreatorDueDateSelector',

@@ -3,15 +3,17 @@
     Участник:
     <div class="task-card__participant">
       <button
-        v-if="!currentWorkerId"
+        v-if="!currentWorker"
         type="button"
         class="task-card__link"
+        data-test="add-user-button"
         @click.stop="isMenuOpened = !isMenuOpened"
       >
         добавить пользователя
       </button>
       <button
         v-else
+        data-test="selected-user-button"
         class="users-list__user"
       >
         <img
@@ -23,6 +25,7 @@
         </span>
         <AppIcon
           class="icon--trash users-list__icon"
+          data-test="app-icon"
           @click="$emit('select', null)"
         />
       </button>
@@ -30,11 +33,13 @@
         <ul
           v-if="isMenuOpened"
           v-click-outside="hideUserMenu"
+          data-test="users-list"
           class="users-list"
         >
           <li
             v-for="user in users"
             :key="user.id"
+            data-test="user"
           >
             <button
               class="users-list__user"

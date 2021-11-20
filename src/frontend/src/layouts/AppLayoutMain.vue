@@ -6,7 +6,10 @@
       :show-login="!isAuthenticated && $route.name !== 'Login' "
     />
     <div class="content">
-      <AppLayoutMainSidebar v-if="isAuthenticated" />
+      <AppLayoutMainSidebar
+        v-if="isAuthenticated"
+        data-test="sidebar"
+      />
       <slot />
     </div>
   </div>

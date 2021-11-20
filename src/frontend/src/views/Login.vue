@@ -16,6 +16,7 @@
       <button
         class="sign-form__close"
         type="button"
+        data-test="close-button"
         @click="$router.push('/')"
       />
     </div>
@@ -36,6 +37,7 @@
           name="email"
           class="input"
           placeholder="E-mail"
+          data-test="email-component"
           :error-text="validations.email.error"
         />
       </label>
@@ -46,6 +48,7 @@
           name="password"
           class="input"
           placeholder="Пароль"
+          data-test="password-component"
           :error-text="validations.password.error"
         />
       </label>
@@ -63,7 +66,7 @@
 </template>
 
 <script>
-import { validator } from '@/common/mixins';
+import validator from '@/common/mixins/validator';
 
 export default {
   name: 'Login',

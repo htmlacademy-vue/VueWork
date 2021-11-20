@@ -6,6 +6,7 @@
         v-if="!disabled"
         type="button"
         class="task-card__plus"
+        data-test="create-tick"
         @click="$emit('createTick')"
       />
     </h4>
@@ -17,6 +18,7 @@
         v-for="tick in ticks"
         :key="tick.id || tick.uuid"
         class="task-card__item"
+        data-test="tick"
       >
         <div class="task-card__checkbox">
           <label class="checkbox">
@@ -37,9 +39,15 @@
                 :value="tick.text"
                 max="64"
                 placeholder="Введите текст пункта"
+                data-test="tick-text-input"
                 @change="updateTick(tick, 'text', $event.target.value)"
               />
-              <span v-else>{{ tick.text }}</span>
+              <span
+                v-else
+                data-test="tick-text"
+              >
+                {{ tick.text }}
+              </span>
             </div>
           </label>
         </div>
@@ -47,9 +55,11 @@
         <div
           class="task-card__icons"
           :class="{'task-card__icons--hidden': disabled}"
+          data-test="icons-block"
         >
           <AppIcon
             class="icon--trash"
+            data-test="delete-icon"
             @click="$emit('removeTick', { uuid: tick.uuid })"
           />
         </div>

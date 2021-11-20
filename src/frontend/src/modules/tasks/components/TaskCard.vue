@@ -1,9 +1,12 @@
 <template>
-  <AppDrop @drop="$emit('drop', $event)">
+  <AppDrop
+    data-test="app-drop"
+    @drop="$emit('drop', $event)"
+  >
     <AppDrag :transfer-data="task">
       <div
         class="task"
-        :class="{'task--is-dragged': isDragged}"
+        data-test="task-card"
         @click="$emit('click', task.id)"
       >
         <div
@@ -24,11 +27,13 @@
           <span
             v-if="task.status"
             class="task__status"
+            data-test="task-status"
             :class="`task__status--${task.status}`"
           />
           <span
             v-if="task.timeStatus"
             class="task__status"
+            data-test="task-time-status"
             :class="`task__status--${task.timeStatus}`"
           />
         </div>
@@ -41,6 +46,7 @@
         <TaskCardTags
           v-if="task.tags && task.tags.length"
           :tags="task.tags"
+          data-test="task-card-tags"
         />
       </div>
     </AppDrag>
@@ -65,12 +71,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-
-  data() {
-    return {
-      isDragged: false
-    };
   }
 };
 </script>

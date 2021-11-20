@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import TaskCardCreator from '@/modules/tasks/components/TaskCardCreator';
 import { TASK_DETAILS_CONFIG } from '@/common/queryConfig';
 
@@ -19,9 +18,6 @@ export default {
     return {
       task: null
     };
-  },
-  computed: {
-    ...mapState('Tasks', ['tasks'])
   },
   async created() {
     try {

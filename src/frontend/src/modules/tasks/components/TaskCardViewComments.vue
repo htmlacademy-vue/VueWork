@@ -33,10 +33,12 @@
           v-model="newComment"
           name="comment_text"
           placeholder="Введите текст комментария"
+          data-test="textarea"
           :error-text="validations.newComment.error"
         />
         <button
           type="submit"
+          data-test="submit-btn"
           @click.prevent="submit"
         >
           Написать комментарий
