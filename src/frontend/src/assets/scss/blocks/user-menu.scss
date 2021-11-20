@@ -1,0 +1,48 @@
+.user-menu {
+  width: 240px;
+  padding-top: 32px;
+  padding-bottom: 24px;
+
+  text-align: center;
+
+  border-radius: 6px 0 0 6px;
+  background-color: $white-900;
+  box-shadow: 0 4px 8px $shadow-500;
+
+  img {
+    display: block;
+
+    margin: 0 auto;
+  }
+
+  span {
+    display: block;
+
+    margin-top: 16px;
+    padding-bottom: 16px;
+
+    color: $black-900;
+    border-bottom: 1px solid $gray-100;
+
+    @include m-s18-h21;
+  }
+
+  &__link {
+    display: block;
+
+    margin-top: 16px;
+    padding: 5px 0;
+
+    color: $blue-gray-600;
+
+    @include m-s14-h21;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:active {
+      color: $gray-900;
+    }
+  }
+}

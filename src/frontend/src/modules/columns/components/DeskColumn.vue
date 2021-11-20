@@ -19,12 +19,12 @@
       />
 
       <AppIcon
-        v-if="!isInputShowed"
+        v-if="!isInputShowed && isAdmin"
         class="icon--edit"
         @click="showInput"
       />
       <AppIcon
-        v-if="!isInputShowed && !columnTasks.length"
+        v-if="!isInputShowed && isAdmin && !columnTasks.length"
         class="icon--trash"
         @click="$emit('delete', column.id)"
       />
@@ -75,10 +75,14 @@ export default {
   computed: {
     ...mapState('Tasks', ['tasks']),
     ...mapGetters('Tasks', ['filteredTasks']),
+    ...mapGetters('Auth', ['getUserAttribute']),
     columnTasks() {
       return this.filteredTasks
         .filter(task => task.columnId === this.column.id)
         .sort((a, b) => a.sortOrder - b.sortOrder);
+    },
+    isAdmin() {
+      return this.getUserAttribute('isAdmin');
     }
   },
 

@@ -110,7 +110,7 @@ export default {
 
     border-radius: 6px;
     background-color: $white-900;
-    box-shadow: 0 4px 8px rgba(54, 123, 245, .24);
+    box-shadow: 0 4px 8px $shadow-500;
   }
 }
 

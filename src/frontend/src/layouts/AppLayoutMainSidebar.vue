@@ -12,18 +12,21 @@
         Бэклог
       </span>
     </button>
-    <div class="backlog__content">
+    <div
+      v-show="!backlogIsHidden"
+      class="backlog__content"
+    >
       <div class="backlog__scroll">
         <div class="backlog__collapse">
           <div class="backlog__user">
             <div class="backlog__account">
               <img
-                src="/public/user6.jpg"
-                alt="Ваш аватар"
+                :src="getUserAttribute('avatar')"
+                :alt="getUserAttribute('name')"
                 width="32"
                 height="32"
               />
-              Игорь Пятин
+              {{ getUserAttribute('name') }}
             </div>
 
             <div class="backlog__counter">
@@ -69,11 +72,17 @@ export default {
   },
 
   computed: {
+    ...mapState('Auth', ['user']),
     ...mapState('Tasks', ['tasks']),
+    ...mapGetters('Auth', ['getUserAttribute']),
     ...mapGetters('Tasks', ['filteredTasks']),
     sidebarTasks() {
+      if (!this.user) {
+        return [];
+      }
+      const { isAdmin, id: userId } = this.user;
       return this.filteredTasks
-        .filter(task => !task.columnId)
+        .filter(task => !task.columnId && (isAdmin || task.userId === userId))
         .sort((a, b) => a.sortOrder - b.sortOrder);
     }
   }
@@ -82,22 +91,22 @@ export default {
 
 <style lang="scss" scoped>
 .backlog {
+  $bl: ".backlog";
+  $animationSpeed: 0.5s;
+
   display: flex;
-  overflow: hidden;
   flex-direction: column;
   flex-grow: 1;
 
   min-width: 400px;
   max-width: 400px;
   padding-top: 16px;
+  overflow: hidden;
 
   background-color: $gray-100;
 
-  $bl: ".backlog";
-
   &__title {
     position: relative;
-
     height: 26px;
     margin-bottom: 5px;
     margin-left: 12px;
@@ -153,10 +162,8 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-
-    width: 400px;
-
     background-color: $gray-100;
+    width: 400px;
   }
 
   &__scroll {
