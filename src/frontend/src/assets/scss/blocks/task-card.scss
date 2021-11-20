@@ -207,6 +207,7 @@
     background-color: transparent;
 
     @include r-s16-h21;
+
     &:after {
       position: absolute;
       top: 2px;
@@ -222,8 +223,10 @@
       background-image: url("~@/assets/img/icon-pencil.svg");
       background-size: cover;
     }
+
     &:hover {
       text-decoration: none;
+
       &:after {
         opacity: 1;
       }
