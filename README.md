@@ -3,7 +3,7 @@
 ## Начальные требования
 - Docker
 - Docker-compose
-- NodeJS 10+
+- NodeJS 16+
 - Pre commit (optional)
 
 ## Docker установка
