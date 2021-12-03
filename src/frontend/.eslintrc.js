@@ -14,18 +14,18 @@ module.exports = {
       'error',
       2,
       {
-        ignoredNodes: [ 'TemplateLiteral' ]
+        ignoredNodes: ['TemplateLiteral']
       }
     ],
-    'max-len': [ 'error', { code: 80 } ],
-    semi: [ 'error', 'always' ],
-    curly: [ 'error', 'all' ],
-    quotes: [ 'error', 'single' ],
-    'comma-dangle': [ 'error', 'never' ],
-    'arrow-parens': [ 'error', 'as-needed' ],
-    'space-in-parens': [ 'error', 'never' ],
-    'object-curly-spacing': [ 'error', 'always' ],
-    'array-bracket-spacing': [ 'error', 'never' ],
+    'max-len': ['error', { code: 80 }],
+    semi: ['error', 'always'],
+    curly: ['error', 'all'],
+    quotes: ['error', 'single'],
+    'comma-dangle': ['error', 'never'],
+    'arrow-parens': ['error', 'as-needed'],
+    'space-in-parens': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    'array-bracket-spacing': ['error', 'never'],
     // https://eslint.vuejs.org/rules/
     'vue/html-self-closing': ['error', {
       'html': {
@@ -44,7 +44,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [ '**/__tests__/*.{j,t}s?(x)' ],
+      files: ['**/__tests__/*.{j,t}s?(x)'],
       env: {
         jest: true
       }

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import TaskCardCreatorTagsAnalyzer
-  from '@/modules/tasks/components/TaskCardCreatorTagsAnalyzer';
+from '@/modules/tasks/components/TaskCardCreatorTagsAnalyzer';
 
 const propsData = {
   tags: '#hello#world'

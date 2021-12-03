@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import TaskCardCreator from '@/modules/tasks/components/TaskCardCreator';
 import TaskCardViewTicksList
-  from '@/modules/tasks/components/TaskCardViewTicksList';
+from '@/modules/tasks/components/TaskCardViewTicksList';
 import AppButton from '@/common/components/AppButton';
 import AppIcon from '@/common/components/AppIcon';
 import { generateMockStore } from '@/store/mocks';

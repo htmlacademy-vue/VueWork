@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import TaskCardViewTicksList
-  from '@/modules/tasks/components/TaskCardViewTicksList.vue';
+from '@/modules/tasks/components/TaskCardViewTicksList.vue';
 import AppIcon from '@/common/components/AppIcon.vue';
 
 const localVue = createLocalVue();

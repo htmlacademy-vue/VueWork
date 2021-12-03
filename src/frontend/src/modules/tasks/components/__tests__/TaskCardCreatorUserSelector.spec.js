@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import { generateMockStore } from '@/store/mocks';
 import users from '@/static/users';
 import TaskCardCreatorUserSelector
-  from '@/modules/tasks/components/TaskCardCreatorUserSelector.vue';
+from '@/modules/tasks/components/TaskCardCreatorUserSelector.vue';
 import AppIcon from '@/common/components/AppIcon';
 
 const localVue = createLocalVue();

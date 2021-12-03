@@ -1,5 +1,5 @@
 import TaskCardCreatorDueDateSelector
-  from '@/modules/tasks/components/TaskCardCreatorDueDateSelector';
+from '@/modules/tasks/components/TaskCardCreatorDueDateSelector';
 import { mount } from '@vue/test-utils';
 import Datepicker from 'vuejs-datepicker';
 

@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises';
 import { generateMockStore } from '@/store/mocks';
 import users from '@/static/users';
 import TaskCardViewComments
-  from '@/modules/tasks/components/TaskCardViewComments.vue';
+from '@/modules/tasks/components/TaskCardViewComments.vue';
 import AppTextarea from '@/common/components/AppTextarea.vue';
 import { authenticateUser } from '@/common/helpers';
 
