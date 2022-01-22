@@ -6,11 +6,11 @@ rebuild_backend:
 
 start_project:
 	docker-compose down -v
-	docker-compose up
+	docker-compose up --build
 
 run_server:
 	docker-compose down -v
-	docker-compose up backend
+	docker-compose up backend --build
 
 run_tests:
 	cd src/frontend; echo "...Starting frontend tests" && \
