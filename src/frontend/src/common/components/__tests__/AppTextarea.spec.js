@@ -30,18 +30,18 @@ describe('AppTextarea', () => {
     expect(wrapper.find('textarea').element.value).toBe(propsData.value);
   });
 
-  it('It emits an input event when typing', async () => {
+  it('It emits an input event when typing', () => {
     createComponent({ propsData });
     let textarea = wrapper.find('textarea');
-    await textarea.trigger('input');
+    textarea.trigger('input');
     expect(wrapper.emitted().input).toBeTruthy();
   });
 
-  it('emits the current textarea value when typing', async () => {
+  it('emits the current textarea value when typing', () => {
     createComponent({ propsData });
     let textarea = wrapper.find('textarea');
     textarea.element.value = 'test';
-    await textarea.trigger('input');
+    textarea.trigger('input');
     expect(wrapper.emitted().input[0][0]).toEqual('test');
   });
 

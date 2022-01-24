@@ -1,4 +1,4 @@
-import { emailRegex, urlRegex } from '@/common/constants';
+import { EMAIL_REGEX, URL_REGEX } from '@/common/constants';
 
 const rules = {
   isNotEmpty: {
@@ -11,12 +11,12 @@ const rules = {
   },
   email: {
     rule: value => !!value
-      ? emailRegex.test(String(value).toLowerCase())
+      ? EMAIL_REGEX.test(String(value).toLowerCase())
       : true,
     message: 'Электроная почта имеет неверный формат'
   },
   url: {
-    rule: value => !!value ? urlRegex.test(value) : true,
+    rule: value => !!value ? URL_REGEX.test(value) : true,
     message: 'Ссылка имеет неверный формат'
   }
 };
