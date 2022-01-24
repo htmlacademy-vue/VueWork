@@ -51,8 +51,6 @@
 </template>
 
 <script>
-import users from '@/static/users.json';
-
 export default {
   name: 'TaskCardCreatorUserSelector',
   model: {
@@ -67,11 +65,13 @@ export default {
   },
   data() {
     return {
-      isMenuOpened: false,
-      users
+      isMenuOpened: false
     };
   },
   computed: {
+    users() {
+      return this.$store.state.users;
+    },
     currentWorker() {
       return this.users.find(({ id }) => id === this.currentWorkerId);
     }
@@ -110,7 +110,7 @@ export default {
 
     border-radius: 6px;
     background-color: $white-900;
-    box-shadow: 0 4px 8px $shadow-500;
+    box-shadow: 0 4px 8px rgba(54, 123, 245, .24);
   }
 }
 

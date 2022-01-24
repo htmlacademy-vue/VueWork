@@ -26,10 +26,7 @@
           name="search"
           required
           placeholder="Поиск"
-          @input="$emit(
-            'applyFilters',
-            { item: $event.target.value, entity: 'search' }
-          )"
+          @input="search"
         />
         <button type="submit">
           Найти
@@ -47,21 +44,21 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+import { UPDATE_FILTERS } from '@/store/mutations-types';
+
 export default {
   name: 'AppLayoutHeader',
-  props: {
-    showMenu: {
-      type: Boolean,
-      default: true
-    },
-    filters: {
-      type: Object,
-      required: true
-    }
+  computed: {
+    ...mapState('Tasks', ['filters'])
   },
+
   methods: {
-    applyFilters(e) {
-      this.$emit('applyFilters',{ item: e.target.value, entity: 'search' });
+    ...mapMutations('Tasks', {
+      updateFilters: UPDATE_FILTERS
+    }),
+    search(e) {
+      this.updateFilters({ search: e.target.value });
     }
   }
 };

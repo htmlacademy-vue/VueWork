@@ -128,6 +128,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex';
 import { getReadableDate, getTimeAgo } from '@/common/helpers';
 import { taskCardName } from '@/common/mixins';
 import TaskCardViewTicksList
@@ -135,7 +136,6 @@ import TaskCardViewTicksList
 import TaskCardTags from '@/modules/tasks/components/TaskCardTags';
 import TaskCardViewComments
   from '@/modules/tasks/components/TaskCardViewComments';
-import users from '@/static/users.json';
 
 export default {
   name: 'TaskCardView',
@@ -145,19 +145,13 @@ export default {
     TaskCardViewComments
   },
   mixins: [taskCardName],
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    }
-  },
   data: () => ({
     task: null
   }),
   computed: {
-    user() {
-      return users[0];
-    },
+    ...mapState('Tasks', ['tasks']),
+    ...mapState('Auth', ['user']),
+    ...mapGetters('Tasks', ['getTaskById']),
     dueDate() {
       if (!this.task) {
         return false;
@@ -182,7 +176,7 @@ export default {
     this.$refs.dialog?.focus();
   },
   methods: {
-    put() {},
+    ...mapActions('Ticks', ['put']),
     addCommentToList(comment) {
       this.task.comments
         ? this.task.comments.push(comment)

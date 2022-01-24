@@ -1,10 +1,7 @@
 <template>
   <div class="app-layout-default">
-    <AppLayoutHeader
-      :show-menu="false"
-      :filters="filters"
-      @applyFilters="$emit('applyFilters', $event)"
-    />
+    <AppNotifications />
+    <AppLayoutHeader :show-menu="false" />
     <slot />
   </div>
 </template>
@@ -16,12 +13,6 @@ export default {
   name: 'AppLayoutDefault',
   components: {
     AppLayoutHeader
-  },
-  props: {
-    filters: {
-      type: Object,
-      required: true
-    }
   }
 };
 </script>

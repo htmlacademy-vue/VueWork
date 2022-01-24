@@ -1,15 +1,9 @@
 <template>
   <div class="app-layout-main">
-    <AppLayoutHeader
-      :filters="filters"
-      @applyFilters="$emit('applyFilters', $event)"
-    />
+    <AppNotifications />
+    <AppLayoutHeader />
     <div class="content">
-      <AppLayoutMainSidebar
-        :tasks="tasks"
-        :filters="filters"
-        @updateTasks="$emit('updateTasks', $event)"
-      />
+      <AppLayoutMainSidebar />
       <slot />
     </div>
   </div>
@@ -24,16 +18,6 @@ export default {
   components: {
     AppLayoutMainSidebar,
     AppLayoutHeader
-  },
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    },
-    filters: {
-      type: Object,
-      required: true
-    }
   }
 };
 </script>
