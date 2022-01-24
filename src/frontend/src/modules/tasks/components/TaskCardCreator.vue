@@ -3,6 +3,7 @@
     ref="dialog"
     class="task-card"
     tabindex="0"
+    data-test="dialog"
     @click.self="closeDialog"
     @keydown.esc="closeDialog"
   >
@@ -10,6 +11,7 @@
       <button
         class="task-card__close"
         type="button"
+        data-test="close-button"
         @click="closeDialog"
       />
 
@@ -20,13 +22,13 @@
             type="text"
             name="task_name"
             class="task-card__name"
-            :class="{ 'task-card__name--min': taskToEdit }"
             max="37"
           />
 
           <a
             v-if="taskToEdit"
             class="task-card__edit task-card__edit--red"
+            data-test="remove-task-button"
             @click="removeTask"
           >
             Удалить Задачу
@@ -52,6 +54,7 @@
             :key="value"
             class="meta-filter__item"
             :class="{ active: value === taskStatuses[task.statusId]}"
+            data-test="status-list"
             @click="setStatus(value)"
           >
             <a
@@ -67,7 +70,10 @@
         v-if="task.id"
         class="task-card__block"
       >
-        <p class="task-card__date">
+        <p
+          class="task-card__date"
+          data-test="task-date"
+        >
           {{ $taskCardDate }}
         </p>
       </div>
@@ -108,6 +114,7 @@
             <span
               v-if="validations.url.error"
               class="task-card__error-text"
+              data-test="url-error"
             >
               {{ validations.url.error }}
             </span>
@@ -140,6 +147,7 @@
       <div class="task-card__buttons">
         <AppButton
           class="button--border"
+          data-test="cancel-button"
           @click="closeDialog"
         >
           Отменить
@@ -148,6 +156,7 @@
           class="button--primary"
           :class="{'button--disabled': !isFormValid}"
           :disabled="!isFormValid"
+          data-test="submit-button"
           @click="submit"
         >
           Сохранить

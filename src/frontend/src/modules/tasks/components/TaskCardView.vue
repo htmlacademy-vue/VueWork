@@ -11,6 +11,7 @@
       <button
         class="task-card__close"
         type="button"
+        data-test="close-btn"
         @click="closeDialog"
       />
       <div class="task-card__block">
@@ -18,6 +19,7 @@
           <h1
             class="task-card__name"
             :class="{ 'task-card__name--min' : isAdmin }"
+            data-test="task-name"
           >
             {{ task ? task.title : '' }}
           </h1>
@@ -25,6 +27,7 @@
           <a
             v-if="isAdmin"
             class="task-card__edit"
+            data-test="edit-btn"
             @click="$router.push({
               name: 'TaskEdit',
               params: { id: $route.params.id }
@@ -41,7 +44,10 @@
 
       <div class="task-card__block">
         <ul class="task-card__params">
-          <li v-if="task && task.user">
+          <li
+            v-if="task && task.user"
+            data-test="task-user"
+          >
             Участник:
             <div class="task-card__participant">
               <button
@@ -56,7 +62,10 @@
               </button>
             </div>
           </li>
-          <li v-if="dueDate">
+          <li
+            v-if="dueDate"
+            data-test="task-date"
+          >
             Срок:
             <button
               type="button"
@@ -72,6 +81,7 @@
         <div
           v-if="task && task.description"
           class="task-card__description"
+          data-test="task-description"
         >
           <h4 class="task-card__title">
             Описание
@@ -83,6 +93,7 @@
       <div
         v-if="task && task.url"
         class="task-card__block task-card__links"
+        data-test="task-url"
       >
         <h4 class="task-card__title">
           Ссылки
@@ -101,10 +112,12 @@
       <div
         v-if="showTicks"
         class="task-card__block"
+        data-test="task-ticks-block"
       >
         <TaskCardViewTicksList
           :ticks="task.ticks"
           disabled
+          data-test="task-ticks"
           @updateTick="put"
         />
       </div>
@@ -118,6 +131,7 @@
         </h4>
         <TaskCardTags
           :tags="task.tags"
+          data-test="task-tags"
         />
       </div>
 
@@ -126,6 +140,7 @@
         class="task-card__comments"
         :comments="task.comments || []"
         :task-id="task.id"
+        data-test="task-comments"
         @new-comment="addCommentToList"
       />
     </section>
