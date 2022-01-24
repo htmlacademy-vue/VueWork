@@ -159,8 +159,6 @@ export default {
 
   background-color: $white-900;
 
-  $bl: ".desk";
-
   &--rubber {
     width: 100%;
   }

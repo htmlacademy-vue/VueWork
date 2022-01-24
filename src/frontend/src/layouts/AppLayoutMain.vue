@@ -37,6 +37,7 @@ export default {
 .app-layout-main {
   display: flex;
   flex-direction: column;
+
   height: 100vh;
 }
 

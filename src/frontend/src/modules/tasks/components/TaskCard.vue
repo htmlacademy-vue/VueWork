@@ -3,6 +3,7 @@
     <AppDrag :transfer-data="task">
       <div
         class="task"
+        :class="{'task--is-dragged': isDragged}"
         @click="$emit('click', task.id)"
       >
         <div
@@ -64,6 +65,12 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  data() {
+    return {
+      isDragged: false
+    };
   }
 };
 </script>

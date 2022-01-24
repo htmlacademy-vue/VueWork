@@ -104,7 +104,7 @@ export class TaskApiService extends CrudApiService {
   _normalize(task) {
     return {
       ...task,
-      ticks: task.ticks ? task.ticks : [],
+      ticks: task.ticks || [],
       dueDate: task.dueDate ? new Date(task.dueDate) : null,
       status: task.statusId ? taskStatuses[task.statusId] : '',
       timeStatus: TaskApiService.getTimeStatus(task.dueDate)

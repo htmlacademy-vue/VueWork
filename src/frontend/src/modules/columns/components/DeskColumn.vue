@@ -31,14 +31,16 @@
     </h2>
 
     <div class="column__target-area">
-      <TaskCard
-        v-for="task in columnTasks"
-        :key="task.id"
-        :task="task"
-        class="column__task"
-        @drop="$moveTask($event, task)"
-        @click="$router.push({ path: `/${task.id}` })"
-      />
+      <transition-group name="tasks">
+        <TaskCard
+          v-for="task in columnTasks"
+          :key="task.id"
+          :task="task"
+          class="column__task"
+          @drop="$moveTask($event, task)"
+          @click="$router.push({ path: `/${task.id}` })"
+        />
+      </transition-group>
     </div>
   </AppDrop>
 </template>
@@ -184,5 +186,18 @@ export default {
     margin-right: 5px;
     margin-left: 5px;
   }
+}
+
+// Transitions
+.tasks-enter-active,
+.tasks-leave-active {
+  transition: all $animationSpeed ease;
+}
+
+.tasks-enter,
+.tasks-leave-to {
+  transform: scale(1.1);
+
+  opacity: 0;
 }
 </style>

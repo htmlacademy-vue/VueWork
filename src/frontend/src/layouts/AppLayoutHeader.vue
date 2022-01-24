@@ -137,11 +137,14 @@ export default {
 <style lang="scss" scoped>
 .header {
   position: relative;
+
   display: flex;
   align-items: center;
+
+  box-sizing: border-box;
   height: $header-height;
   padding: 15px 12px;
-  box-sizing: border-box;
+
   background-color: $blue-600;
   box-shadow: 0 2px 4px $shadow-900;
 
@@ -156,48 +159,56 @@ export default {
 
   &__search {
     position: relative;
+
     margin-right: 18px;
 
     input {
-      @include m-s14-h21;
-
       margin: 0;
       padding: 11px 11px 11px 40px;
+
       color: $white-900;
       border: 1px solid $white-800;
       border-radius: 6px;
       background-color: transparent;
+
+      @include m-s14-h21;
     }
 
     button {
       position: absolute;
       top: 50%;
       left: 11px;
+
       overflow: hidden;
+
       width: 17px;
       height: 17px;
       padding: 0;
+
       transform: translateY(-50%);
+
       color: transparent;
       border: none;
       outline: none;
       background-color: transparent;
-      background-image: url("../assets/img/icon-search.svg");
+      background-image: url("~@/assets/img/icon-search.svg");
       background-repeat: no-repeat;
       background-size: cover;
     }
   }
 
   &__create-task {
-    @include m-s14-h21;
-
     margin-right: 18px;
     padding: 13px 14px 11px;
+
     text-transform: uppercase;
+
     color: $black-700;
     border-radius: 6px;
     background: $white-800;
     box-shadow: 0 4px 8px $shadow-500;
+
+    @include m-s14-h21;
 
     &:hover {
       background-color: $yellow-300;
@@ -209,22 +220,29 @@ export default {
   }
 
   &__login {
-    @include m-s14-h21;
     position: relative;
+
     padding: 10px;
     padding-left: 37px;
+
     cursor: pointer;
-    border-radius: 6px;
+
     color: $white-900;
+    border-radius: 6px;
+
+    @include m-s14-h21;
 
     &::before {
       position: absolute;
       top: 8px;
       left: 12px;
+
       width: 16px;
       height: 21px;
+
       content: "";
-      background-image: url("../assets/img/login.svg");
+
+      background-image: url("~@/assets/img/login.svg");
     }
 
     &:hover {
@@ -241,8 +259,10 @@ export default {
 
     img {
       display: block;
+
       width: 40px;
       height: 40px;
+
       border-radius: 50%;
     }
   }
