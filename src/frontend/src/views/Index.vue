@@ -1,5 +1,6 @@
 <template>
   <section class="desk">
+    <router-view :tasks="tasks" />
     <div class="desk__header">
       <div class="desk__header-top">
         <h1 class="desk__title">
@@ -22,7 +23,7 @@
               :title="user.name"
               class="user-filter__item"
               :class="{ active: filters.users.some(id => id === user.id) }"
-              @click="$emit('applyFilters', { item: user.id, entity: 'users' })"
+              @click="applyFilters(user.id, 'users')"
             >
               <a class="user-filter__button">
                 <img
@@ -42,10 +43,7 @@
               :key="value"
               class="meta-filter__item"
               :class="{ active: filters.statuses.some(s => s === value) }"
-              @click="$emit(
-                'applyFilters',
-                { item: value, entity: 'statuses' }
-              )"
+              @click="applyFilters(value, 'statuses')"
             >
               <a
                 class="meta-filter__status"
@@ -67,7 +65,6 @@
         :key="column.id"
         :column="column"
         :tasks="tasks"
-        :filters="filters"
         @update="updateColumn"
         @delete="deleteColumn"
         @updateTasks="$emit('updateTasks', $event)"
@@ -85,7 +82,6 @@
 <script>
 import columns from '@/static/columns.json';
 import users from '@/static/users.json';
-import taskStatuses from '@/common/enums/taskStatuses';
 import { STATUSES } from '@/common/constants';
 import DeskColumn from '@/modules/columns/components/DeskColumn';
 import { uniqueId } from 'lodash';
@@ -108,7 +104,6 @@ export default {
       columns,
       users,
       STATUSES,
-      taskStatuses,
       newColumnTitle: 'Новый столбец'
     };
   },
@@ -127,6 +122,9 @@ export default {
     },
     deleteColumn(id) {
       this.columns = this.columns.filter(column => column.id !== id);
+    },
+    applyFilters(item, entity) {
+      this.$emit('applyFilters', { item, entity });
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <AppDrop
     class="column"
-    @drop="moveTask"
+    @drop="$moveTask"
   >
     <h2 class="column__name">
       <span v-if="!isInputShowed">
@@ -36,7 +36,8 @@
         :key="task.id"
         :task="task"
         class="column__task"
-        @drop="moveTask($event, task)"
+        @drop="$moveTask($event, task)"
+        @click="$router.push({ path: `/${task.id}` })"
       />
     </div>
   </AppDrop>
@@ -45,17 +46,15 @@
 <script>
 import AppDrop from '@/common/components/AppDrop';
 import TaskCard from '@/modules/tasks/components/TaskCard';
-import AppIcon from '@/common/components/AppIcon';
-import { getTargetColumnTasks, addActive } from '@/common/helpers';
-import { cloneDeep } from 'lodash';
+import { moveTask } from '@/common/mixins';
 
 export default {
   name: 'DeskColumn',
   components: {
     AppDrop,
-    TaskCard,
-    AppIcon
+    TaskCard
   },
+  mixins: [moveTask],
   props: {
     column: {
       type: Object,
@@ -63,10 +62,6 @@ export default {
     },
     tasks: {
       type: Array,
-      required: true
-    },
-    filters: {
-      type: Object,
       required: true
     }
   },
@@ -90,7 +85,6 @@ export default {
       await this.$nextTick();
       this.$refs.title.focus();
     },
-
     updateInput() {
       this.isInputShowed = false;
       if (this.column.title === this.columnTitle) {
@@ -100,26 +94,6 @@ export default {
         ...this.column,
         title: this.columnTitle
       });
-    },
-    moveTask(active, toTask) {
-      // Note: prevent update if task is not moving
-      if (toTask && active.id === toTask.id) {
-        return;
-      }
-
-      const toColumnId = this.column ? this.column.id : null;
-      const targetColumnTasks = getTargetColumnTasks(toColumnId, this.tasks);
-      const activeClone = cloneDeep({ ...active, columnId: toColumnId });
-      const resultTasks = addActive(activeClone, toTask, targetColumnTasks);
-      const tasksToUpdate = [];
-
-      resultTasks.forEach((task, index) => {
-        if (task.sortOrder !== index || task.id === active.id) {
-          const newTask = cloneDeep({ ...task, sortOrder: index });
-          tasksToUpdate.push(newTask);
-        }
-      });
-      this.$emit('updateTasks', tasksToUpdate);
     }
   }
 };

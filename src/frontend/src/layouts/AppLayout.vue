@@ -1,37 +1,21 @@
 <template>
-  <div class="app-layout">
-    <AppLayoutHeader
-      :filters="filters"
-      @applyFilters="$emit('applyFilters', $event)"
-    />
-    <div class="content">
-      <AppLayoutMainSidebar
-        :tasks="tasks"
-        :filters="filters"
-        @updateTasks="$emit('updateTasks', $event)"
-      />
-      <IndexHome
-        :tasks="tasks"
-        :filters="filters"
-        @updateTasks="$emit('updateTasks', $event)"
-        @applyFilters="$emit('applyFilters', $event)"
-      />
-    </div>
-  </div>
+  <component
+    :is="layout"
+    :tasks="layoutTasks"
+    :filters="filters"
+    @updateTasks="$emit('updateTasks', $event)"
+    @applyFilters="$emit('applyFilters', $event)"
+  >
+    <slot />
+  </component>
 </template>
 
 <script>
-import AppLayoutMainSidebar from '@/layouts/AppLayoutMainSidebar';
-import AppLayoutHeader from '@/layouts/AppLayoutHeader';
-import IndexHome from '@/views/Index';
+
+const defaultLayout = 'AppLayoutDefault';
 
 export default {
   name: 'AppLayout',
-  components: {
-    AppLayoutMainSidebar,
-    AppLayoutHeader,
-    IndexHome
-  },
   props: {
     tasks: {
       type: Array,
@@ -41,20 +25,16 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    layout() {
+      const layout = this.$route.meta.layout || defaultLayout;
+      return () => import(`@/layouts/${layout}.vue`);
+    },
+
+    layoutTasks() {
+      return this.$route.meta.layout !== defaultLayout ? this.tasks : null;
+    }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.app-layout {
-  display: flex;
-  flex-direction: column;
-
-  height: 100vh;
-}
-
-.content {
-  display: flex;
-  flex-grow: 1;
-}
-</style>

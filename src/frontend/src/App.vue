@@ -5,19 +5,27 @@
       :filters="filters"
       @updateTasks="updateTasks"
       @applyFilters="applyFilters"
-    />
+    >
+      <router-view
+        :tasks="routeProps.tasks"
+        :filters="routeProps.filters"
+        @updateTasks="updateTasks"
+        @applyFilters="applyFilters"
+        @addTask="addTask"
+        @editTask="editTask"
+        @deleteTask="deleteTask"
+      />
+    </AppLayout>
   </div>
 </template>
+
 <script>
-import AppLayout from '@/layouts/AppLayout';
 import tasks from '@/static/tasks.json';
+import users from '@/static/users.json';
 import { normalizeTask } from '@/common/helpers';
 
 export default {
   name: 'App',
-  components: {
-    AppLayout
-  },
   data() {
     return {
       tasks: tasks.map(task => normalizeTask(task)),
@@ -29,6 +37,17 @@ export default {
     };
   },
   computed: {
+    // temporary solution for props that we will get from vuex later
+    routeProps() {
+      const routes = {
+        IndexHome: { tasks: this.filteredTasks, filters: this.filters },
+        TaskView: { tasks: this.filteredTasks, filters: this.filters },
+        TaskEdit: { tasks: this.filteredTasks, filters: null },
+        TaskCreate: { tasks: null, filters: null }
+      };
+      return routes[this.$route.name] || {};
+    },
+
     filteredTasks() {
       const filtersAreEmpty = Object.values(this.filters)
         .every(value => !value.length);
@@ -79,11 +98,36 @@ export default {
           : resultValues.push(item);
         this.filters[entity] = resultValues;
       }
+    },
+    addTask(task) {
+      const newTask = normalizeTask(task);
+      newTask.id = this.tasks.length + 1;
+      newTask.sortOrder = this.tasks.filter(task => !task.columnId).length;
+      if (newTask.userId) {
+        newTask.user = { ...this.getTaskUser(newTask.userId) };
+      }
+      this.tasks = [...this.tasks, newTask];
+    },
+    editTask(task) {
+      const index = this.tasks.findIndex(({ id }) => task.id === id);
+      if (~index) {
+        const newTask = normalizeTask(task);
+        if (newTask.userId) {
+          newTask.user = { ...this.getTaskUser(newTask.userId) };
+        }
+        this.$set(this.tasks, index, newTask);
+      }
+    },
+    deleteTask(id) {
+      this.tasks = this.tasks.filter(task => task.id !== id);
+    },
+    getTaskUser(userId) {
+      return users.find(user => user.id === userId);
     }
   }
 };
 </script>
 
 <style lang="scss">
-@import "assets/scss/app";
+@import "~@/assets/scss/app";
 </style>
