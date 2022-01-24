@@ -267,19 +267,18 @@ export default {
         this.isFormValid = false;
         return;
       }
-      let { ticks, ...rest } = this.task;
       let id = this.task.id;
       if (this.taskToEdit) {
-        await this.tasksPut(rest);
+        await this.tasksPut(this.task);
       } else {
         const task = await this.tasksPost({
-          ...rest,
+          ...this.task,
           sortOrder: this.sidebarTasksCount
         });
         id = task.id;
       }
       // Note: submit all ticks with task id
-      await this.submitTicks(id, ticks);
+      await this.submitTicks(id, this.task.ticks);
       let message = `Задача ${this.task.title}`;
       message += this.taskToEdit ? ' обновлена' : ' создана';
       this.$notifier.success(message);
@@ -287,6 +286,7 @@ export default {
     },
     async submitTicks(taskId, ticks) {
       const promises = ticks
+        .filter(tick => !tick.id)
         .map(tick => {
           if (!tick.text) {
             return;
@@ -345,7 +345,6 @@ export default {
 <style lang="scss" scoped>
 @import "~@/assets/scss/blocks/meta-filter.scss";
 @import "~@/assets/scss/blocks/task-card.scss";
-
 .task-card__name {
   cursor: pointer;
 }

@@ -8,7 +8,7 @@
 <script>
 import { mapState } from 'vuex';
 import TaskCardCreator from '@/modules/tasks/components/TaskCardCreator';
-import { createNewDate } from '@/common/helpers';
+import { TASK_DETAILS_CONFIG } from '@/common/queryConfig';
 
 export default {
   name: 'TaskEdit',
@@ -23,16 +23,13 @@ export default {
   computed: {
     ...mapState('Tasks', ['tasks'])
   },
-  created() {
-    const task = this.tasks.find(task => {
-      return +task.id === +this.$route.params.id;
-    });
-    if (task) {
-      task.dueDate = task.dueDate ? new Date(task.dueDate) : createNewDate();
-      task.ticks = task.ticks || [];
-      this.task = task;
-    } else {
-      this.$router.push('/');
+  async created() {
+    try {
+      this.task = await this.$api.tasks.get(
+        this.$route.params.id, TASK_DETAILS_CONFIG
+      );
+    } catch {
+      this.$router.go(-1);
     }
   }
 };

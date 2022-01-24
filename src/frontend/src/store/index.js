@@ -3,6 +3,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPlugins from '@/plugins/vuexPlugins';
 import modules from '@/store/modules';
+import { TASK_CARDS_CONFIG } from '@/common/queryConfig';
 import {
   ADD_NOTIFICATION,
   DELETE_NOTIFICATION,
@@ -12,7 +13,6 @@ import {
   DELETE_ENTITY
 } from '@/store/mutations-types';
 import { MESSAGE_LIVE_TIME } from '@/common/constants';
-import jsonUsers from '@/static/users.json';
 
 Vue.use(Vuex);
 
@@ -25,7 +25,7 @@ const actions = {
   async init({ dispatch }) {
     dispatch('fetchUsers');
     dispatch('Columns/query');
-    dispatch('Tasks/query');
+    dispatch('Tasks/query', TASK_CARDS_CONFIG);
   },
   async createNotification({ commit }, { ...notification }) {
     const uniqueNotification = {
@@ -38,8 +38,8 @@ const actions = {
       MESSAGE_LIVE_TIME
     );
   },
-  fetchUsers({ commit }) {
-    const users = jsonUsers; // TODO: Add api call
+  async fetchUsers({ commit }) {
+    const users = await this.$api.users.query();
     commit(SET_ENTITY, { module: null, entity: 'users', value: users });
   }
 };

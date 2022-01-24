@@ -25,7 +25,7 @@ export default {
   },
   props: {
     dueDate: {
-      type: Date,
+      type: [Date, String],
       default: null
     }
   },

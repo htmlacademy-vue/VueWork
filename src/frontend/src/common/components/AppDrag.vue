@@ -1,6 +1,6 @@
 <template>
   <div
-    :draggable="true"
+    :draggable="draggable"
     @dragstart.self="onDrag"
     @dragover.prevent
     @dragenter.prevent
@@ -11,6 +11,7 @@
 
 <script>
 import { DATA_TRANSFER_PAYLOAD, MOVE } from '@/common/constants';
+import { mapState } from 'vuex';
 
 export default {
   name: 'AppDrag',
@@ -20,6 +21,18 @@ export default {
       required: true
     }
   },
+
+  computed: {
+    ...mapState('Auth', ['user']),
+    draggable() {
+      if (!this.user) {
+        return false;
+      }
+      const { isAdmin, id: userId } = this.user;
+      return isAdmin || userId === this.transferData.userId;
+    }
+  },
+
   methods: {
     onDrag({ dataTransfer }) {
       dataTransfer.effectAllowed = MOVE;

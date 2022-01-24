@@ -1,4 +1,3 @@
-import { cloneDeep } from 'lodash';
 import {
   SET_ENTITY,
   ADD_ENTITY,
@@ -6,7 +5,6 @@ import {
   DELETE_ENTITY
 } from '@/store/mutations-types';
 import { capitalize } from '@/common/helpers';
-import jsonColumns from '@/static/columns.json';
 
 const entity = 'columns';
 const module = capitalize(entity);
@@ -18,8 +16,8 @@ export default {
     columns: []
   },
   actions: {
-    query({ commit }) {
-      const data = jsonColumns; // TODO: Add api call
+    async query({ commit }) {
+      const data = await this.$api.columns.query();
       commit(
         SET_ENTITY,
         {
@@ -29,8 +27,8 @@ export default {
       );
     },
 
-    post({ commit }, column) {
-      const data = cloneDeep(column); // TODO: Add api call
+    async post({ commit }, column) {
+      const data = await this.$api.columns.post(column);
       commit(ADD_ENTITY,
         {
           ...namespace,
@@ -39,8 +37,8 @@ export default {
       );
     },
 
-    put({ commit }, column) {
-      // TODO: Add api call
+    async put({ commit }, column) {
+      await this.$api.columns.put(column);
       commit(UPDATE_ENTITY,
         {
           ...namespace,
@@ -49,8 +47,8 @@ export default {
       );
     },
 
-    delete({ commit }, id) {
-      // TODO: Add api call
+    async delete({ commit }, id) {
+      await this.$api.columns.delete(id);
       commit(DELETE_ENTITY,
         {
           ...namespace,
