@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cdr09037-1569-4542-as83-gt5d34a48c33",
+    "name": "Администратор",
+    "email": "admin@example.com",
+    "isAdmin": true,
+    "avatar": "/public/admin.jpg"
+  },
+  {
+    "id": "7c7a4c48-3896-4353-b050-c8e50b967e8f",
+    "name": "Василий Ложкин",
+    "email": "vasia@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user5.jpg"
+  },
+  {
+    "id": "86aea12a-9dbf-4e8f-856a-cad238dd66c5",
+    "name": "Сергей Есенин",
+    "email": "seresen@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user2.jpg"
+  },
+  {
+    "id": "b6009037-1d39-4452-8883-cc4c34a48c33",
+    "name": "Алексей Яшин",
+    "email": "yashin@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user3.jpg"
+  },
+  {
+    "id": "9a655ecf-0966-4c81-aad9-e0b707cb73e8",
+    "name": "Игорь Пятин",
+    "email": "five@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user6.jpg"
+  },
+  {
+    "id": "059d070d-9d48-4120-af9d-6028cdae0e5a",
+    "name": "Елена Шаповалова",
+    "email": "six@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user1.jpg"
+  },
+  {
+    "id": "a8e98a44-41ae-46bb-8cf4-cba932c463e5",
+    "name": "Андрей Ильин",
+    "email": "seven@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user7.jpg"
+  },
+  {
+    "id": "55f2968a-cc2b-42e2-b918-be3c973bf546",
+    "name": "Диана Аверина",
+    "email": "eight@example.com",
+    "isAdmin": false,
+    "avatar": "/public/user4.jpg"
+  }
+]
