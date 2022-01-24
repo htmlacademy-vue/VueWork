@@ -8,6 +8,7 @@
         <button
           class="desk__add"
           type="button"
+          @click="addColumn"
         >
           Добавить столбец
         </button>
@@ -20,6 +21,8 @@
               :key="user.id"
               :title="user.name"
               class="user-filter__item"
+              :class="{ active: filters.users.some(id => id === user.id) }"
+              @click="$emit('applyFilters', { item: user.id, entity: 'users' })"
             >
               <a class="user-filter__button">
                 <img
@@ -38,6 +41,11 @@
               v-for="({ value, label }) in STATUSES"
               :key="value"
               class="meta-filter__item"
+              :class="{ active: filters.statuses.some(s => s === value) }"
+              @click="$emit(
+                'applyFilters',
+                { item: value, entity: 'statuses' }
+              )"
             >
               <a
                 class="meta-filter__status"
@@ -54,74 +62,16 @@
       ref="columns"
       class="desk__columns"
     >
-      <div
+      <DeskColumn
         v-for="column in columns"
         :key="column.id"
-        class="column"
-      >
-        <h2 class="column__name">
-          <span>{{ column.title }}</span>
-        </h2>
-
-        <div class="column__target-area">
-          <div
-            v-for="task in columnTasks[column.id]"
-            :key="task.id"
-            class="column__task"
-          >
-            <div class="task">
-              <div
-                v-if="task.user"
-                class="task__user"
-              >
-                <div class="task__avatar">
-                  <img
-                    :src="task.user.avatar"
-                    :alt="task.user.name"
-                    width="20"
-                    height="20"
-                  />
-                </div>
-                {{ task.user.name }}
-              </div>
-
-              <div class="task__statuses">
-                <span
-                  v-if="task.status"
-                  class="task__status"
-                  :class="`task__status--${task.status}`"
-                />
-                <span
-                  v-if="task.timeStatus"
-                  class="task__status"
-                  :class="`task__status--${task.timeStatus}`"
-                />
-              </div>
-
-              <h5
-                class="task__title"
-                :class="{ 'task__title--first': !task.user }"
-              >
-                {{ task.title }}
-              </h5>
-
-              <ul
-                v-if="task.tags && task.tags.length"
-                class="task__tags"
-              >
-                <li
-                  v-for="(tag, index) in task.tags"
-                  :key="index"
-                >
-                  <span class="task__tag">
-                    {{ tag }}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+        :column="column"
+        :tasks="tasks"
+        :filters="filters"
+        @update="updateColumn"
+        @delete="deleteColumn"
+        @updateTasks="$emit('updateTasks', $event)"
+      />
     </div>
     <p
       v-else
@@ -134,47 +84,57 @@
 
 <script>
 import columns from '@/static/columns.json';
-import tasks from '@/static/tasks.json';
 import users from '@/static/users.json';
+import taskStatuses from '@/common/enums/taskStatuses';
 import { STATUSES } from '@/common/constants';
-import {
-  getTagsArrayFromString,
-  normalizeTask
-} from '@/common/helpers';
+import DeskColumn from '@/modules/columns/components/DeskColumn';
+import { uniqueId } from 'lodash';
 
 export default {
   name: 'IndexHome',
+  components: { DeskColumn },
+  props: {
+    tasks: {
+      type: Array,
+      required: true
+    },
+    filters: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       columns,
-      tasks: tasks.map(task => normalizeTask(task)),
       users,
-      STATUSES
+      STATUSES,
+      taskStatuses,
+      newColumnTitle: 'Новый столбец'
     };
   },
-  computed: {
-    columnTasks() {
-      return this.tasks
-        .filter(({ columnId }) => columnId)
-        .reduce((accumulator, task) => {
-          task.tags = getTagsArrayFromString(task.tags);
-          if (accumulator[task.columnId]) {
-            accumulator[task.columnId] = [...accumulator[task.columnId], task];
-          } else {
-            accumulator[task.columnId] = [task];
-          }
-          return accumulator;
-        }, {});
+  methods: {
+    addColumn() {
+      this.columns = [
+        ...this.columns,
+        { id: uniqueId('column_'), title: this.newColumnTitle }
+      ];
+    },
+    updateColumn(column) {
+      const index = this.columns.findIndex(({ id }) => id === column.id);
+      if (~index) {
+        this.columns.splice(index, 1, column);
+      }
+    },
+    deleteColumn(id) {
+      this.columns = this.columns.filter(column => column.id !== id);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "~@/assets/scss/blocks/meta-filter.scss";
 @import "~@/assets/scss/blocks/user-filter.scss";
-@import "~@/assets/scss/blocks/column.scss";
-@import "~@/assets/scss/blocks/task.scss";
+@import "~@/assets/scss/blocks/meta-filter.scss";
 
 .desk {
   display: flex;

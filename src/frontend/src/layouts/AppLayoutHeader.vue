@@ -16,10 +16,15 @@
         class="header__search"
       >
         <input
+          :value="filters.search"
           type="search"
           name="search"
           required
           placeholder="Поиск"
+          @input="$emit(
+            'applyFilters',
+            { item: $event.target.value, entity: 'search' }
+          )"
         />
         <button type="submit">
           Найти
@@ -31,7 +36,13 @@
 
 <script>
 export default {
-  name: 'AppLayoutHeader'
+  name: 'AppLayoutHeader',
+  props: {
+    filters: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 
