@@ -4,7 +4,7 @@ WORKDIR /frontend
 
 COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
 RUN npm install @vue/cli@4.5.8 -g
 
