@@ -31,7 +31,7 @@ https://nodejs.org/en/download/
 
 - Установите зависимости
 
-`$ npm install`
+`$ npm ci`
 
 ## Backend установка
 
@@ -41,7 +41,7 @@ https://nodejs.org/en/download/
 
 - Установите зависимости
 
-`$ npm install`
+`$ npm ci`
 
 ## Docker настройка
 
