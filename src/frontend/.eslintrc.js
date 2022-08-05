@@ -17,7 +17,7 @@ module.exports = {
         ignoredNodes: [ 'TemplateLiteral' ]
       }
     ],
-    'max-len': [ 'error', { code: 80 } ],
+    'max-len': [ 'error', { code: 200 } ],
     semi: [ 'error', 'always' ],
     curly: [ 'error', 'all' ],
     quotes: [ 'error', 'single' ],

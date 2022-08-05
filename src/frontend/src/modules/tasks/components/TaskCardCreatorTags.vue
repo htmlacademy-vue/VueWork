@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import TaskCardCreatorTagsAnalyzer
-  from '@/modules/tasks/components/TaskCardCreatorTagsAnalyzer';
+import TaskCardCreatorTagsAnalyzer from '@/modules/tasks/components/TaskCardCreatorTagsAnalyzer';
 
 export default {
   name: 'TaskCardCreatorTags',

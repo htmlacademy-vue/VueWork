@@ -152,11 +152,9 @@ import { mapGetters, mapState, mapActions } from 'vuex';
 import { getReadableDate, getTimeAgo } from '@/common/helpers';
 import { taskCardName } from '@/common/mixins';
 import { TASK_DETAILS_CONFIG } from '@/common/queryConfig';
-import TaskCardViewTicksList
-  from '@/modules/tasks/components/TaskCardViewTicksList';
+import TaskCardViewTicksList from '@/modules/tasks/components/TaskCardViewTicksList';
 import TaskCardTags from '@/modules/tasks/components/TaskCardTags';
-import TaskCardViewComments
-  from '@/modules/tasks/components/TaskCardViewComments';
+import TaskCardViewComments from '@/modules/tasks/components/TaskCardViewComments';
 
 export default {
   name: 'TaskCardView',
