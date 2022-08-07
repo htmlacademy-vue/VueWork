@@ -63,17 +63,6 @@ describe('Index', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it ('displays desk with desk--rubber class', () => {
-    authenticateUser(store);
-    createComponent({ localVue, store, stubs });
-    expect(wrapper.find('.desk--rubber').exists()).toBeTruthy();
-  });
-
-  it ('displays desk without desk--rubber class', () => {
-    createComponent({ localVue, store, stubs });
-    expect(wrapper.find('.desk--rubber').exists()).toBeFalsy();
-  });
-
   it ('displays add column button', () => {
     authenticateUser(store);
     createComponent({ localVue, store, stubs });

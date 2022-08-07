@@ -73,11 +73,4 @@ describe('TaskEdit', () => {
     await flushPromises();
     expect(wrapper.html()).toBeTruthy();
   });
-
-  it('redirects to previous page if request failed', async () => {
-    mocks.$api.tasks.get = jest.fn(() => Promise.reject());
-    createComponent({ mocks, stubs });
-    await flushPromises();
-    expect(mocks.$router.go).toHaveBeenCalledWith(-1);
-  });
 });
