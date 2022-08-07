@@ -1,7 +1,7 @@
 <template>
   <section
     class="desk"
-    :class="{'desk--rubber': isUserAuthorized}"
+    :class="{'desk--rubber': !isUserAuthorized}"
   >
     <router-view />
     <div class="desk__header">

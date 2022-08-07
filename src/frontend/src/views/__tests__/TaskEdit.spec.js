@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import flushPromises from 'flush-promises';
-import TaskEdit from '@/views/index/tasks/edit/_id';
+import TaskEdit from '@/views/TaskView.vue';
 import AppButton from '@/common/components/AppButton';
 import { generateMockStore } from '@/store/mocks';
 import Vuex from 'vuex';

@@ -5,7 +5,7 @@ import { SET_ENTITY } from '@/store/mutations-types';
 import users from '@/static/users';
 import columns from '@/static/columns';
 import { STATUSES } from '@/common/constants';
-import Index from '@/views/index/Index.vue';
+import Index from '@/views/Index.vue';
 import AppIcon from '@/common/components/AppIcon';
 
 const localVue = createLocalVue();
