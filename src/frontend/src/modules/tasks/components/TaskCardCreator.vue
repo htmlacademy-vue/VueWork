@@ -159,13 +159,13 @@
 
 <script>
 import TaskCardCreatorUserSelector
-  from '@/modules/tasks/components/TaskCardCreatorUserSelector';
+from '@/modules/tasks/components/TaskCardCreatorUserSelector';
 import TaskCardCreatorDueDateSelector
-  from '@/modules/tasks/components/TaskCardCreatorDueDateSelector';
+from '@/modules/tasks/components/TaskCardCreatorDueDateSelector';
 import TaskCardViewTicksList
-  from '@/modules/tasks/components/TaskCardViewTicksList';
+from '@/modules/tasks/components/TaskCardViewTicksList';
 import TaskCardCreatorTags
-  from '@/modules/tasks/components/TaskCardCreatorTags';
+from '@/modules/tasks/components/TaskCardCreatorTags';
 import { STATUSES } from '@/common/constants';
 import { createUUIDv4, getTimeAgo } from '@/common/helpers';
 import { mapActions, mapGetters } from 'vuex';
